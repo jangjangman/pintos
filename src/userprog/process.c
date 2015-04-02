@@ -45,6 +45,38 @@ process_execute (const char *file_name)
   return tid;
 }
 
+void argument_stack(char **parse, int count, void **esp){
+	int i;
+	uint32_t argv_addr[count];
+	int arglen;
+
+	for (i=count-1;i>=0;i--){
+		*esp -= (arglen = strlen(parse[i]) +1);
+		memcpy(*esp, parse[i], arglen);
+		argv_addr[i]=(uint32_t)*esp;
+	}
+
+	*esp = (uint32_t)*esp & 0xfffffffc;
+
+	*esp -=4;
+	*(uint32_t*)(*esp) = 0;
+
+	for( i=count-1; i>=0; i--){
+		*esp -=4;
+		*(uint32_t*)(*esp) = argv_addr[i];
+	}
+
+	*esp -=4;
+	*(uint32_t*)(*esp) = (uint32_t)*esp+4;
+
+	*esp-=sizeof(int);
+	*(uint32_t*)(*esp) = count;
+
+	*esp-=4;
+	*(uint32_t*)(*esp) = 0;
+}
+
+
 /* A thread function that loads a user process and makes it start
    running. */
 static void
@@ -53,13 +85,24 @@ start_process (void *f_name)
   char *file_name = f_name;
   struct intr_frame if_;
   bool success;
+  char *parse[LOADER_ARGS_LEN/ 2+1];
+  int count=0;
+  char *token, *save_ptr;
 
   /* Initialize interrupt frame and load executable. */
   memset (&if_, 0, sizeof if_);
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
+
+  for(token = strtok_r(file_name," ",&save_ptr); token != NULL ; token = strtok_r(NULL," ",&save_ptr)){
+	  parse[count] = token;
+	  count++;
+  }
+
   success = load (file_name, &if_.eip, &if_.esp);
+  argument_stack(&parse, count, &if_.esp);
+  hex_dump(if_.esp,if_.esp,PHYS_BASE-if_.esp,true);
 
   /* If load failed, quit. */
   palloc_free_page (file_name);
