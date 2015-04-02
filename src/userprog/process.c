@@ -15,8 +15,10 @@
 #include "threads/init.h"
 #include "threads/interrupt.h"
 #include "threads/palloc.h"
+#include "threads/malloc.h"
 #include "threads/thread.h"
 #include "threads/vaddr.h"
+#include "userprog/syscall.h"
 
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
@@ -30,6 +32,7 @@ process_execute (const char *file_name)
 {
   char *fn_copy;
   tid_t tid;
+  char *save_ptr;
 
   /* Make a copy of FILE_NAME.
      Otherwise there's a race between the caller and load(). */
@@ -39,6 +42,9 @@ process_execute (const char *file_name)
   strlcpy (fn_copy, file_name, PGSIZE);
 
   /* Create a new thread to execute FILE_NAME. */
+
+  file_name = strtok_r(file_name," ",&save_ptr);
+
   tid = thread_create (file_name, PRI_DEFAULT, start_process, fn_copy);
   if (tid == TID_ERROR)
     palloc_free_page (fn_copy); 
@@ -53,6 +59,9 @@ start_process (void *f_name)
   char *file_name = f_name;
   struct intr_frame if_;
   bool success;
+
+  char *save_ptr;
+  file_name = strtok_r(file_name," ",&save_ptr);
 
   /* Initialize interrupt frame and load executable. */
   memset (&if_, 0, sizeof if_);
@@ -195,7 +204,10 @@ struct Elf32_Phdr
 #define PF_W 2          /* Writable. */
 #define PF_R 4          /* Readable. */
 
-static bool setup_stack (void **esp);
+#define WORD_SIZE 4
+#define DEFAULT_ARGV 2
+
+static bool setup_stack (void **esp, const char* file_name, char** save_ptr);
 static bool validate_segment (const struct Elf32_Phdr *, struct file *);
 static bool load_segment (struct file *file, off_t ofs, uint8_t *upage,
                           uint32_t read_bytes, uint32_t zero_bytes,
@@ -427,7 +439,7 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 /* Create a minimal stack by mapping a zeroed page at the top of
    user virtual memory. */
 static bool
-setup_stack (void **esp) 
+setup_stack (void **esp, const char* file_name, char** save_ptr) 
 {
   uint8_t *kpage;
   bool success = false;
@@ -439,11 +451,62 @@ setup_stack (void **esp)
       if (success)
         *esp = PHYS_BASE;
       else
+	  {
         palloc_free_page (kpage);
-    }
+		return success;
+	  }
+	}
+
+  char *token;
+  char **argv = malloc(DEFAULT_ARGV * sizeof(char *));
+  int i;
+  int argc=0;
+  int argv_size = DEFAULT_ARGV;
+
+  //push args onto stack
+  for(token=file_name; token != NULL; token=strtok_r(NULL," ",&save_ptr))
+  {
+	  *esp -= strlen(token) + 1;
+	  argv[argc] = *esp;
+	  argc++;
+	  //Resize argv
+	  if(argc >= argv_size)
+	  {
+		  argv_size *=2;
+		  argv = realloc(argv, argv_size*sizeof(char *));
+	  }
+	  memcpy(*esp, token, strlen(token) + 1);
+  }
+  argv[argc] = 0;
+  //align to word size (4 bytes)
+  i = (size_t) *esp % WORD_SIZE;
+  if(i)
+  {
+	  *esp -=i;
+	  memcpy(*esp, &argv[argc], i);
+  }
+  //push argv[i] for all i
+  for (i=argc; i>=0; i--)
+  {
+	  *esp -= sizeof(char *);
+	  memcpy(*esp, &argv[i], sizeof(char *));
+  }
+
+  //push argv
+  token = *esp;
+  *esp -= sizeof(char **);
+  memcpy(*esp, &token, sizeof(char **));
+  //push argc
+  *esp -= sizeof(int);
+  memcpy(*esp, &argc, sizeof(int));
+  //push fake return addr
+  *esp -= sizeof(void *);
+  memcpy(*esp, &argv[argc], sizeof(void *));
+  //free argv
+  free(argv);
+
   return success;
 }
-
 /* Adds a mapping from user virtual address UPAGE to kernel
    virtual address KPAGE to the page table.
    If WRITABLE is true, the user process may modify the page;
