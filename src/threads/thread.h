@@ -4,6 +4,7 @@
 #include <debug.h>
 #include <list.h>
 #include <stdint.h>
+#include "threads/synch.h"
 
 /* States in a thread's life cycle. */
 enum thread_status
@@ -88,17 +89,44 @@ struct thread
     char name[16];                      /* Name (for debugging purposes). */
     uint8_t *stack;                     /* Saved stack pointer. */
     int priority;                       /* Priority. */
-
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
 
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
-    uint32_t *pagedir;                  /* Page directory. */
+    uint32_t *pagedir;					/* Page directory. */
 #endif
+	struct semaphore sema_wait;
+	struct semaphore load_wait; 
+	struct thread *parent;
+	struct list childs;
+	struct thread_info *ip;
 
-    /* Owned by thread.c. */
+	bool load_fail;
+
+	int cur_fd;
+	struct list files;
+	struct file *exec;
+	
     unsigned magic;                     /* Detects stack overflow. */
+  };
+
+struct user_file
+{
+		int fd;
+		struct file *file;
+		struct list_elem elem;
+};
+    /* Owned by thread.c. */
+
+struct thread_info
+  {
+	  struct thread *tp;				/* Thread pointer */
+	  tid_t tid;
+	  struct list_elem info_elem;		/* list element */
+	  int exit_status;
+	  bool exited;						/* Check this thread is exited */	
+	  bool waited;						/* Check this thread is waited by parent */
   };
 
 /* If false (default), use round-robin scheduler.

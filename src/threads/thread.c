@@ -196,8 +196,20 @@ thread_create (const char *name, int priority,
   sf = alloc_frame (t, sizeof *sf);
   sf->eip = switch_entry;
 
+  t->parent = thread_current();
+  struct thread_info *ip = (struct thread_info *) malloc(sizeof(struct thread_info));
+  ip->tid = t->tid;
+  ip->exited = false;
+  ip->waited = false;
+  ip->tp = t;
+  t->ip = ip;
+  t->load_fail = false;
+  list_push_back(&thread_current()->childs, &ip->info_elem);
   /* Add to run queue. */
   thread_unblock (t);
+
+  if (t->priority > thread_get_priority()) 
+	  thread_yield();
 
   return tid;
 }
@@ -440,6 +452,11 @@ init_thread (struct thread *t, const char *name, int priority)
   t->stack = (uint8_t *) t + PGSIZE;
   t->priority = priority;
   t->magic = THREAD_MAGIC;
+  list_init (&t->childs);
+  list_init (&t->files);
+  sema_init (&t->sema_wait, 0);
+  sema_init (&t->load_wait, 0);
+  t->cur_fd = 2;
 }
 
 /* Allocates a SIZE-byte frame at the top of thread T's stack and
