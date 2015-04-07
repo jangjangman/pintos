@@ -50,6 +50,7 @@ process_execute (const char *file_name)
   strlcpy(t_name,fn_copy,i+1);
   t_name[i]=0;
   /* Create a new thread to execute FILE_NAME. */
+  
   tid = thread_create (t_name, PRI_DEFAULT, start_process, fn_copy);
 
   sema_down(&thread_current()->load_wait);
@@ -131,10 +132,10 @@ start_process (void *f_name)
 	  thread_exit ();
    }
 	
-  	sema_up (&curr->parent->load_wait);
   	curr->exec = filesys_open (file_name);
   	file_deny_write ( curr->exec );
   	argument_stack(&parse, count, &if_.esp);
+  	sema_up (&curr->parent->load_wait);
   	//hex_dump(if_.esp,if_.esp,PHYS_BASE-if_.esp,true);
     palloc_free_page (file_name);
   
@@ -186,8 +187,10 @@ process_wait (tid_t child_tid)
 	if(ip->exited && ip->tp==NULL)
 		return -1;
 		
-	if(!ip->exited)
+	if(!ip->exited){
 		sema_down (&ip->tp->sema_wait);
+		sema_up (&ip->tp->sema_exit);
+	}
 	ip->waited=true;
 	list_remove(e);
 	status = ip->exit_status;
@@ -206,8 +209,8 @@ process_exit (void)
   struct list_elem *e;
   struct user_file *uf;
 
-  if (curr->exec != NULL)
-	  file_allow_write (curr->exec);
+  //if (curr->exec != NULL)
+	//  file_allow_write (curr->exec);
 
   while (!list_empty (&curr->files)){
 	  e=list_pop_front(&curr->files);
@@ -236,6 +239,8 @@ process_exit (void)
   	file_close(curr->exec);
   	curr->exec=NULL;
 	sema_up(&curr->sema_wait);
+	if (curr->parent != NULL)
+		sema_down (&curr->sema_exit); 
 }
 
 /* Sets up the CPU for running user code in the current

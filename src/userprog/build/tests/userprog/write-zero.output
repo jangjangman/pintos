@@ -1,12 +1,12 @@
-Copying tests/userprog/write-zero into /tmp/XooAiYhwQA.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/XooAiYhwQA.dsk...
-Writing command line to /tmp/EV1jLnyaED.dsk...
-qemu -hda /tmp/EV1jLnyaED.dsk -hdb /tmp/3QnzvFE0ME.dsk -hdc /tmp/XooAiYhwQA.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/write-zero into /tmp/CFchheVfUq.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/CFchheVfUq.dsk...
+Writing command line to /tmp/nvdeA6FYCB.dsk...
+qemu -hda /tmp/nvdeA6FYCB.dsk -hdb /tmp/fPfKHZAd1V.dsk -hdc /tmp/CFchheVfUq.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put write-zero put sample.txt run write-zero
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
 374 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
+Calibrating timer...  58,880,000 loops/s.
 hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 75 sector (37 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -20,8 +20,8 @@ Executing 'write-zero':
 (write-zero) end
 write-zero: exit(0)
 Execution of 'write-zero' complete.
-Timer: 64 ticks
-Thread: 0 idle ticks, 63 kernel ticks, 1 user ticks
+Timer: 66 ticks
+Thread: 0 idle ticks, 65 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 93 reads, 160 writes
 hd1:0: 75 reads, 0 writes

@@ -97,7 +97,8 @@ struct thread
     uint32_t *pagedir;					/* Page directory. */
 #endif
 	struct semaphore sema_wait;
-	struct semaphore load_wait; 
+	struct semaphore load_wait;
+	struct semaphore sema_exit;
 	struct thread *parent;
 	struct list childs;
 	struct thread_info *ip;
@@ -121,12 +122,12 @@ struct user_file
 
 struct thread_info
   {
-	  struct thread *tp;				/* Thread pointer */
+	  struct thread *tp;				
 	  tid_t tid;
-	  struct list_elem info_elem;		/* list element */
+	  struct list_elem info_elem;		
 	  int exit_status;
-	  bool exited;						/* Check this thread is exited */	
-	  bool waited;						/* Check this thread is waited by parent */
+	  bool exited;							
+	  bool waited;						
   };
 
 /* If false (default), use round-robin scheduler.

@@ -6,19 +6,19 @@
 #include "threads/vaddr.h"
 
 static void syscall_handler (struct intr_frame *);
-//void syscall_halt (struct intr_frame *);
+void syscall_halt (struct intr_frame *);
 static void syscall_exit (int status);
-/*static void syscall_exec (struct intr_frame *);
+static void syscall_exec (struct intr_frame *);
 static void syscall_wait (struct intr_frame *);
 static void syscall_create (struct intr_frame *);
-static void syscall_remove (struct intr_frame *);*/
+static void syscall_remove (struct intr_frame *);
 static void syscall_open (struct intr_frame *);
 static void syscall_close (struct intr_frame *);
 static void syscall_read (struct intr_frame *);
 static void syscall_write (struct intr_frame *);
-/*static void syscall_seek (struct intr_frame *);
+static void syscall_seek (struct intr_frame *);
 static void syscall_tell (struct intr_frame *);
-static void syscall_filesize (struct intr_frame *);*/
+static void syscall_filesize (struct intr_frame *);
 struct file_info * find_by_fd(int);
 
 void
@@ -54,13 +54,13 @@ syscall_handler (struct intr_frame *f UNUSED)
     
   /*  Switch-case for system call number */
   switch (syscall_n){
-  /*  case SYS_HALT:
+    case SYS_HALT:
       syscall_halt (f);
-      break;*/
+      break;
     case SYS_EXIT:
       syscall_exit (*(int *)(f->esp+4));
 			break;
-    /*case SYS_EXEC:
+    case SYS_EXEC:
       syscall_exec (f);
 			break;
     case SYS_WAIT:
@@ -71,38 +71,38 @@ syscall_handler (struct intr_frame *f UNUSED)
 			break;
 		case SYS_REMOVE:
 			syscall_remove (f);
-			break;*/
+			break;
 		case SYS_OPEN:
 			syscall_open (f);
 			break;
-		/*case SYS_FILESIZE:
+		case SYS_FILESIZE:
 			syscall_filesize (f);
-			break;*/
+			break;
 		case SYS_READ:
 			syscall_read (f);
 			break; 
 		case SYS_WRITE:  
 			syscall_write (f);
 			break;
-		/*case SYS_SEEK:
+		case SYS_SEEK:
 			syscall_seek (f);
 			break;
 		case SYS_TELL:
 			syscall_tell (f);
-			break;*/
+			break;
 		case SYS_CLOSE:
 			syscall_close (f);
 			break;
 			
   }
 }
-/*
+
 static void
 syscall_halt(struct intr_frame *f)
 {
 	power_off();
 }
-*/
+
 void
 syscall_exit (int status)
 {
@@ -114,7 +114,7 @@ syscall_exit (int status)
   printf ("%s: exit(%d)\n", thread_name (), status);
   thread_exit ();
 }
-/*
+
 static void
 syscall_exec (struct intr_frame *f)
 {
@@ -140,7 +140,7 @@ syscall_wait (struct intr_frame *f)
   status = process_wait (pid);
   f->eax = status;
 }
-*/
+
 static void
 syscall_write (struct intr_frame *f)
 {
@@ -175,7 +175,7 @@ syscall_write (struct intr_frame *f)
 	}
 }
 
-/*
+
 static void
 syscall_create (struct intr_frame *f)
 {
@@ -206,7 +206,7 @@ syscall_remove (struct intr_frame *f)
 	else 
 		f->eax = filesys_remove(file);
 }
-*/
+
 static void
 syscall_open (struct intr_frame *f)
 {
@@ -232,7 +232,7 @@ syscall_open (struct intr_frame *f)
 	list_push_back (&t->fd_table, &fip->elem);
 	f->eax = t->cur_fd++;
 }
-/*
+
 static void
 syscall_filesize (struct intr_frame *f)
 {
@@ -249,7 +249,7 @@ syscall_filesize (struct intr_frame *f)
 	else
 		f->eax = file_length(target_file);
 }
-*/
+
 static void
 syscall_read (struct intr_frame *f) {
 	int fd;
@@ -287,7 +287,7 @@ syscall_read (struct intr_frame *f) {
 	}
 
 }
-/*
+
 static void
 syscall_seek (struct intr_frame *f)
 {
@@ -320,7 +320,7 @@ syscall_tell (struct intr_frame *f)
 	else
 		f->eax = file_tell(target_file);
 
-}*/
+}
 
 static void
 syscall_close(struct intr_frame *f) {

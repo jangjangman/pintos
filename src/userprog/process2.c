@@ -202,7 +202,7 @@ process_exit (void)
 	{
 	  ittr = list_pop_front (&curr->fd_table);
 		fip = list_entry (ittr, struct file_info, elem);
-		file_close (fip->file);
+		file_close (fip->f);
 		free (fip);
   }
   pd = curr->pagedir;

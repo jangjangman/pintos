@@ -56,7 +56,7 @@ validate_fd(int fd)
 
 
 static void
-syscall_handler (struct intr_frame *f UNUSED) 
+syscall_handler (struct intr_frame *f) 
 {
 	//printf("system call!\n");
 	//thread_exit();
@@ -253,10 +253,10 @@ syscall_read(struct intr_frame *f)
 	memcpy(&buffer,f->esp+8,sizeof(void *));
 	unsigned size;
 	memcpy(&size, f->esp+12, sizeof(unsigned));
-
+	
 	if(!validate_address(buffer))
 		syscall_exit(-1);
-	if(!validate_address(buffer+size))
+	if(!validate_address(buffer+size-1))
 		syscall_exit(-1);
 	if(buffer==NULL)
 		syscall_exit(-1);
@@ -300,6 +300,11 @@ syscall_write(struct intr_frame *f)
 
 	if(!validate_address(buffer))
 		syscall_exit(-1);
+	if(!validate_address(buffer+size-1))
+		syscall_exit(-1);
+	if(buffer==NULL)
+		syscall_exit(-1);
+
 
 	if(!validate_fd(fd)){
 		f->eax=-1;
