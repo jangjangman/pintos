@@ -4,12 +4,11 @@
 #include "threads/interrupt.h"
 #include "threads/thread.h"
 #include "threads/vaddr.h"
-#include "threads/init.h"
-
+#include "userprog/pagedir.h"
 
 static void syscall_handler (struct intr_frame *);
 static void syscall_halt (struct intr_frame *);
-static void syscall_exit (int status);
+//static void syscall_exit (int status);
 static void syscall_exec (struct intr_frame *);
 static void syscall_wait (struct intr_frame *);
 static void syscall_create (struct intr_frame *);
@@ -37,7 +36,7 @@ syscall_init (void)
 bool
 validate_address(void *pointer)
 {
-	if (is_user_vaddr (pointer) && pointer >0x08048000 && pagedir_get_page(thread_current()->pagedir, pointer)!=NULL)
+	if (pointer != NULL && is_user_vaddr (pointer) && pointer >0 && pagedir_get_page(thread_current()->pagedir, pointer)!=NULL)
 		return true;
 	return false;
 }
@@ -61,9 +60,12 @@ syscall_handler (struct intr_frame *f)
 	//printf("system call!\n");
 	//thread_exit();
 	
-	
+	 // printf("%p\n", f->esp);
 	if (!validate_address (f->esp))
+	{
+				//printf("HERE\n");
 		    syscall_exit (-1);
+	}
 
 	  int syscall_n = *(int *)(f->esp);
 	      
@@ -93,6 +95,7 @@ syscall_handler (struct intr_frame *f)
 				syscall_filesize (f);
 				break;
 			case SYS_READ:
+				//printf("HERE\n");
 				syscall_read (f);
 				break;
 			case SYS_WRITE:
@@ -120,9 +123,10 @@ syscall_halt(struct intr_frame *f)
 	NOT_REACHED ();
 }
 
-static void
+void
 syscall_exit(int status)
 {
+	//printf("HERE\n");
 	if(status <0)
 		status=-1;
 
@@ -247,6 +251,10 @@ syscall_filesize(struct intr_frame *f)
 static void
 syscall_read(struct intr_frame *f)
 {
+				//printf("HERE\n");
+	syscall_exit (-1);
+				//printf("HERE\n");
+
 	int fd;
 	memcpy(&fd,f->esp+4,sizeof(int));
 	void *buffer;

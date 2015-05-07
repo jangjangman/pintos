@@ -1,0 +1,149 @@
+Copying tests/userprog/read-normal into /tmp/hRXARIJ292.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/hRXARIJ292.dsk...
+Writing command line to /tmp/rvLKE25eKA.dsk...
+qemu -hda /tmp/rvLKE25eKA.dsk -hdb /tmp/BvcZlJMxsf.dsk -hdc /tmp/hRXARIJ292.dsk -hdd /tmp/BkWM8yZmFp.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put read-normal put sample.txt run read-normal
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'read-normal' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'read-normal':
+Kernel PANIC at ../../threads/thread.c:275 in thread_current(): assertion `is_thread (t)' failed.
+Call stack: 0xc0107336 0xc0100b78 0xc010291a 0xc01032bb 0xc010d376 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108b9b 0xc010d2d9 0xc0109df0 0xc0109cec 0xc0109a9d 0xc010966a 0xc0100d79.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/thread.c:275 in thread_current().
+Kernel command line: -q -f put read-normal put sample.txt run read-normal
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'read-normal' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'read-normal':
+Kernel PANIC at ../../threads/thread.c:275 in thread_current(): assertion `is_thread (t)' failed.
+Call stack: 0xc0107336 0xc0100b78 0xc010291a 0xc01032bb 0xc010d376 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108b9b 0xc010d2d9 0xc0109df0 0xc0109cec 0xc0109a9d 0xc010966a 0xc0100d79.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/thread.c:275 in thread_current().
+Kernel command line: -q -f put read-normal put sample.txt run read-normal
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'read-normal' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'read-normal':
+Kernel PANIC at ../../threads/thread.c:275 in thread_current(): assertion `is_thread (t)' failed.
+Call stack: 0xc0107336 0xc0100b78 0xc010291a 0xc01032bb 0xc010d376 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108b9b 0xc010d2d9 0xc0109df0 0xc0109cec 0xc0109a9d 0xc010966a 0xc0100d79.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/thread.c:275 in thread_current().
+Kernel command line: -q -f put read-normal put sample.txt run read-normal
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'read-normal' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'read-normal':
+Kernel PANIC at ../../threads/thread.c:275 in thread_current(): assertion `is_thread (t)' failed.
+Call stack: 0xc0107336 0xc0100b78 0xc010291a 0xc01032bb 0xc010d376 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108b9b 0xc010d2d9 0xc0109df0 0xc0109cec 0xc0109a9d 0xc010966a 0xc0100d79.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/thread.c:275 in thread_current().
+Kernel command line: -q -f put read-normal put sample.txt run read-normal
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'read-normal' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'read-normal':
+Kernel PANIC at ../../threads/thread.c:275 in thread_current(): assertion `is_thread (t)' failed.
+Call stack: 0xc0107336 0xc0100b78 0xc010291a 0xc01032bb 0xc010d376 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108b9b 0xc010d2d9 0xc0109df0 0xc0109cec 0xc0109a9d 0xc010966a 0xc0100d79.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/thread.c:275 in thread_current().
+Kernel command line: -q -f put read-normal put sample.txt run read-normal
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'read-normal' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'read-normal':
+Kernel PANIC at ../../threads/thread.c:275 in thread_current(): assertion `is_thread (t)' failed.
+Call stack: 0xc0107336 0xc0100b78 0xc010291a 0xc01032bb 0xc010d376 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108b9b 0xc010d2d9 0xc0109df0 0xc0109cec 0xc0109a9d 0xc010966a 0xc0100d79.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/thread.c:275 in thread_current().
+Kernel command line: -q -f put read-normal put sample.txt run read-normal
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'read-normal' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'read-normal':
+Kernel PANIC at ../../threads/thread.c:275 in thread_current(): assertion `is_thread (t)' failed.
+Call stack: 0xc0107336 0xc0100b78 0xc010291a 0xc01032bb 0xc010d376 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108c68 0xc010d395 0xc010aa56 0xc01017e5 0xc01019bb 0 0xc0108b9b 0xc010d2d9 0xc0109df0 0xc0109cec 0xc0109a9d 0xc010966a 0xc0100d79.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/thread.c:275 in thread_current().
+Kernel command line: -q -f put read-normal put sample.txt run read-normal
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  Simulation terminated due to kernel panic.

@@ -1,0 +1,12 @@
+FAIL
+Kernel panic in run: PANIC at ../../threads/thread.c:275 in thread_current(): assertion `is_thread (t)' failed.
+Call stack: 0xc0107336 0xc0100b78 0xc010291a 0xc01032bb 0xc010d376 0xc010aa56 0xc01017e5 0xc01019bb
+Translation of call stack:
+0xc0107336: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0100b78: thread_current (..../../threads/thread.c:276)
+0xc010291a: lock_acquire (...../../threads/synch.c:204)
+0xc01032bb: malloc (..../../threads/malloc.c:125)
+0xc010d376: spt_find_upage (.../build/../../vm/page.c:68)
+0xc010aa56: page_fault (.../userprog/exception.c:170)
+0xc01017e5: intr_handler (..../threads/interrupt.c:361)
+0xc01019bb: intr_entry (threads/intr-stubs.S:38)

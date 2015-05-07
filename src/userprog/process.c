@@ -8,6 +8,7 @@
 #include "userprog/gdt.h"
 #include "userprog/pagedir.h"
 #include "userprog/tss.h"
+#include "userprog/syscall.h"
 #include "filesys/directory.h"
 #include "filesys/file.h"
 #include "filesys/filesys.h"
@@ -18,6 +19,8 @@
 #include "threads/malloc.h"
 #include "threads/thread.h"
 #include "threads/vaddr.h"
+#include "vm/page.h"
+#include "vm/frame.h"
 
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
@@ -132,10 +135,10 @@ start_process (void *f_name)
 	  thread_exit ();
    }
 	
+  	sema_up (&curr->parent->load_wait);
   	curr->exec = filesys_open (file_name);
   	file_deny_write ( curr->exec );
   	argument_stack(&parse, count, &if_.esp);
-  	sema_up (&curr->parent->load_wait);
   	//hex_dump(if_.esp,if_.esp,PHYS_BASE-if_.esp,true);
     palloc_free_page (file_name);
   
@@ -189,7 +192,7 @@ process_wait (tid_t child_tid)
 		
 	if(!ip->exited){
 		sema_down (&ip->tp->sema_wait);
-		sema_up (&ip->tp->sema_exit);
+		//sema_up (&ip->tp->sema_exit);
 	}
 	ip->waited=true;
 	list_remove(e);
@@ -215,7 +218,9 @@ process_exit (void)
   while (!list_empty (&curr->files)){
 	  e=list_pop_front(&curr->files);
 	  uf=list_entry(e,struct user_file, elem);
+	  //lock_acquire(&syscall_lock);
 	  file_close(uf->file);
+	  //lock_release(&syscall_lock);
 	  free(uf);
   }
 	  
@@ -223,6 +228,11 @@ process_exit (void)
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
   pd = curr->pagedir;
+  	//lock_acquire (&frame_lock);
+  	//frame_clear (curr);
+	//hash_destroy (&curr->spt_hash, spt_destroy);
+	//lock_release (&frame_lock);
+
   if (pd != NULL) 
     {
       /* Correct ordering here is crucial.  We must set
@@ -239,12 +249,13 @@ process_exit (void)
   	file_close(curr->exec);
   	curr->exec=NULL;
 	sema_up(&curr->sema_wait);
-	if (curr->parent != NULL)
-		sema_down (&curr->sema_exit); 
+	//if (curr->parent != NULL)
+	//	sema_down (&curr->sema_exit); 
 }
 
 /* Sets up the CPU for running user code in the current
    thread. */
+void
 process_activate (void)
 {
   struct thread *t = thread_current ();
@@ -582,9 +593,12 @@ static bool
 install_page (void *upage, void *kpage, bool writable)
 {
   struct thread *t = thread_current ();
-
+	bool result;
   /* Verify that there's not already a page at that virtual
      address, then map our page there. */
-  return (pagedir_get_page (t->pagedir, upage) == NULL
+  result = (pagedir_get_page (t->pagedir, upage) == NULL
           && pagedir_set_page (t->pagedir, upage, kpage, writable));
+  //if(result)
+	//  spt_insert(upage, kpage, t);
+  return result;
 }
