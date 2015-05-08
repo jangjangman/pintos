@@ -189,7 +189,6 @@ process_wait (tid_t child_tid)
 		
 	if(!ip->exited){
 		sema_down (&ip->tp->sema_wait);
-		sema_up (&ip->tp->sema_exit);
 	}
 	ip->waited=true;
 	list_remove(e);
@@ -239,8 +238,6 @@ process_exit (void)
   	file_close(curr->exec);
   	curr->exec=NULL;
 	sema_up(&curr->sema_wait);
-	if (curr->parent != NULL)
-		sema_down (&curr->sema_exit); 
 }
 
 /* Sets up the CPU for running user code in the current

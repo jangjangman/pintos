@@ -1,7 +1,7 @@
-Copying tests/filesys/base/syn-read into /tmp/B0Qg7ZbruT.dsk...
-Copying tests/filesys/base/child-syn-read into /tmp/B0Qg7ZbruT.dsk...
-Writing command line to /tmp/9NXJVgiHAL.dsk...
-qemu -hda /tmp/9NXJVgiHAL.dsk -hdb /tmp/Hx5Zlgf08S.dsk -hdc /tmp/B0Qg7ZbruT.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/syn-read into /tmp/2PlBfdNAXp.dsk...
+Copying tests/filesys/base/child-syn-read into /tmp/2PlBfdNAXp.dsk...
+Writing command line to /tmp/uVfvPhr9YF.dsk...
+qemu -hda /tmp/uVfvPhr9YF.dsk -hdb /tmp/A3jVQW0Rju.dsk -hdc /tmp/2PlBfdNAXp.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put syn-read put child-syn-read run syn-read
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -37,8 +37,8 @@ child-syn-read: exit(5)
 child-syn-read: exit(6)
 child-syn-read: exit(7)
 (syn-read) exec child 9 of 10: "child-syn-read 8"
-(syn-read) exec child 10 of 10: "child-syn-read 9"
 child-syn-read: exit(8)
+(syn-read) exec child 10 of 10: "child-syn-read 9"
 (syn-read) wait for child 1 of 10 returned 0 (expected 0)
 (syn-read) wait for child 2 of 10 returned 1 (expected 1)
 (syn-read) wait for child 3 of 10 returned 2 (expected 2)
@@ -53,8 +53,8 @@ child-syn-read: exit(9)
 (syn-read) end
 syn-read: exit(0)
 Execution of 'syn-read' complete.
-Timer: 112 ticks
-Thread: 0 idle ticks, 73 kernel ticks, 39 user ticks
+Timer: 111 ticks
+Thread: 0 idle ticks, 72 kernel ticks, 39 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 10788 reads, 340 writes
 hd1:0: 161 reads, 0 writes

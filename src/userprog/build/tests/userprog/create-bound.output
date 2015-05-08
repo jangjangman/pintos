@@ -1,6 +1,6 @@
-Copying tests/userprog/create-bound into /tmp/blu0FrgW25.dsk...
-Writing command line to /tmp/Q3oDNggnQX.dsk...
-qemu -hda /tmp/Q3oDNggnQX.dsk -hdb /tmp/b4x3YntgF3.dsk -hdc /tmp/blu0FrgW25.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/create-bound into /tmp/g3P3GpIb24.dsk...
+Writing command line to /tmp/COox8k5bQU.dsk...
+qemu -hda /tmp/COox8k5bQU.dsk -hdb /tmp/1iFoJtyaqR.dsk -hdc /tmp/g3P3GpIb24.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put create-bound run create-bound
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -18,8 +18,8 @@ Executing 'create-bound':
 (create-bound) end
 create-bound: exit(0)
 Execution of 'create-bound' complete.
-Timer: 66 ticks
-Thread: 0 idle ticks, 65 kernel ticks, 1 user ticks
+Timer: 64 ticks
+Thread: 0 idle ticks, 63 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 84 reads, 162 writes
 hd1:0: 75 reads, 0 writes
