@@ -1,2 +1,30 @@
 FAIL
-run: exec "child-linear": FAILED
+Kernel panic in run: PANIC at ../../threads/synch.c:198 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107326 0xc01028f6 0xc010d71f 0xc010d4ba 0xc0108b0f 0xc0108b59 0xc0109826 0xc0100c0e 0xc010ad96 0xc010aad4 0xc01017e5 0xc01019bb 0xc010d5da 0xc010d1e6 0xc010d198 0xc010aaeb 0xc01017e5 0xc01019bb 0x804825a 0x8048136 0x804884c
+Translation of call stack:
+In kernel.o:
+0xc0107326: debug_panic (.../../lib/kernel/debug.c:34)
+0xc01028f6: lock_acquire (...../../threads/synch.c:200)
+0xc010d71f: swap_clear (.../build/../../vm/swap.c:78)
+0xc010d4ba: spt_destroy (.../build/../../vm/page.c:96)
+0xc0108b0f: hash_clear (..../../lib/kernel/hash.c:67)
+0xc0108b59: hash_destroy (..../../lib/kernel/hash.c:91)
+0xc0109826: process_exit (...../userprog/process.c:235)
+0xc0100c0e: thread_exit (..../../threads/thread.c:304)
+0xc010ad96: syscall_exec (...../userprog/syscall.c:120)
+0xc010aad4: page_fault (.../userprog/exception.c:188)
+0xc01017e5: intr_handler (..../threads/interrupt.c:361)
+0xc01019bb: intr_entry (threads/intr-stubs.S:38)
+0xc010d5da: swap_out (.../build/../../vm/swap.c:38)
+0xc010d1e6: eviction (...build/../../vm/frame.c:82)
+0xc010d198: frame_get (...build/../../vm/frame.c:63)
+0xc010aaeb: page_fault (.../userprog/exception.c:193)
+0xc01017e5: intr_handler (..../threads/interrupt.c:361)
+0xc01019bb: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/page-parallel:
+0x0804825a: fail (...uild/../../tests/lib.c:48)
+0x08048136: vmsg (...uild/../../tests/lib.c:21)
+0x0804884c: random_ulong (??:0)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.

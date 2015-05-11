@@ -1,10 +1,12 @@
 #include "userprog/exception.h"
 #include <inttypes.h>
 #include <stdio.h>
+#include "vm/frame.h"
 #include "userprog/gdt.h"
 #include "threads/interrupt.h"
 #include "threads/thread.h"
-
+#include "threads/vaddr.h"
+#include "userprog/syscall.h"
 /* Number of page faults processed. */
 static long long page_fault_cnt;
 
@@ -125,7 +127,9 @@ page_fault (struct intr_frame *f)
   bool not_present;  /* True: not-present page, false: writing r/o page. */
   bool write;        /* True: access was write, false: access was read. */
   bool user;         /* True: access by user, false: access by kernel. */
+  bool growth;
   void *fault_addr;  /* Fault address. */
+  struct thread *t;
 
   /* Obtain faulting address, the virtual address that was
      accessed to cause the fault.  It may point to code or to
@@ -136,6 +140,7 @@ page_fault (struct intr_frame *f)
      (#PF)". */
   asm ("movl %%cr2, %0" : "=r" (fault_addr));
 
+  t= thread_current();
   /* Turn interrupts back on (they were only off so that we could
      be assured of reading CR2 before it changed). */
   intr_enable ();
@@ -147,7 +152,8 @@ page_fault (struct intr_frame *f)
   not_present = (f->error_code & PF_P) == 0;
   write = (f->error_code & PF_W) != 0;
   user = (f->error_code & PF_U) != 0;
-
+  growth = (f->esp-32 <= fault_addr);
+/*
   if(user){
 	  struct thread *curr = thread_current();
 	  curr->ip->exited=true;
@@ -155,6 +161,41 @@ page_fault (struct intr_frame *f)
 	  printf("%s: exit(-1)\n", thread_name());
 	  thread_exit();
   }
+*/
+  struct spt_entry *spte;
+  void *kpage, *fault_frame = fault_addr;
+  fault_frame = (unsigned)fault_frame / PGSIZE;
+  fault_frame = (unsigned)fault_frame * PGSIZE;
+
+  /* Find page from swap table */
+  spte = spt_find_upage (fault_frame, t);
+
+  /* Stack growth */
+  if (spte == NULL){
+	  if (!is_kernel_vaddr (fault_addr) && user && not_present && growth){
+		  uint8_t *pgalloc, *upage;
+		  upage = (unsigned)fault_addr / PGSIZE;
+		  upage = (unsigned)upage * PGSIZE;
+		  for (pgalloc = t->stack_limit - PGSIZE; pgalloc >= upage; pgalloc -= PGSIZE)
+			  stack_growth(pgalloc, t);
+		  return;
+	  }
+
+	  if ((is_kernel_vaddr(fault_addr) && user) || not_present)
+		  syscall_exit (-1);
+
+  }
+  if (not_present)
+  {
+	  lock_acquire (&frame_lock);
+
+	  kpage = frame_get ();
+	  swap_in (spte, kpage);
+	  lock_release (&frame_lock);
+	  return;
+  }
+  if (write)
+	  syscall_exit (-1);
 
   /* To implement virtual memory, delete the rest of the function
      body, and replace it with code that brings in the page to

@@ -1,13 +1,13 @@
-Copying tests/vm/page-merge-stk into /tmp/AtuCLge1yZ.dsk...
-Copying tests/vm/child-qsort into /tmp/AtuCLge1yZ.dsk...
-Writing command line to /tmp/WaxyfCIzKu.dsk...
-qemu -hda /tmp/WaxyfCIzKu.dsk -hdb /tmp/ylGuObJ4eF.dsk -hdc /tmp/AtuCLge1yZ.dsk -hdd /tmp/x44dqsub23.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-merge-stk into /tmp/z77fQAdZAg.dsk...
+Copying tests/vm/child-qsort into /tmp/z77fQAdZAg.dsk...
+Writing command line to /tmp/ZABxUU3Vd7.dsk...
+qemu -hda /tmp/ZABxUU3Vd7.dsk -hdb /tmp/pNdUybO3uA.dsk -hdc /tmp/z77fQAdZAg.dsk -hdd /tmp/uXM7Fp13in.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-merge-stk put child-qsort run page-merge-stk
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
-374 pages available in user pool.
+373 pages available in user pool.
 Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 160 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
@@ -16,14 +16,21 @@ Boot complete.
 Putting 'page-merge-stk' into the file system...
 Putting 'child-qsort' into the file system...
 Executing 'page-merge-stk':
-Execution of 'page-merge-stk' complete.
-Timer: 78 ticks
-Thread: 0 idle ticks, 75 kernel ticks, 3 user ticks
+(page-merge-stk) begin
+(page-merge-stk) init
+(page-merge-stk) sort chunk 0
+Kernel PANIC at ../../userprog/pagedir.c:133 in pagedir_get_page(): assertion `is_user_vaddr (uaddr)' failed.
+Call stack: 0xc0107326 0xc010a3ef 0xc010d466 0xc010aaa4 0xc01017e5 0xc01019bb 0x80480c5 0x804899c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 266 ticks
+Thread: 0 idle ticks, 72 kernel ticks, 194 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 87 reads, 330 writes
+hd0:1: 161 reads, 846 writes
 hd1:0: 160 reads, 0 writes
-hd1:1: 0 reads, 0 writes
-Console: 937 characters output
+hd1:1: 2088 reads, 3304 writes
+Console: 1345 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 262 page faults
 Powering off...

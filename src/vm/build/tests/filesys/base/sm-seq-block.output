@@ -1,12 +1,12 @@
-Copying tests/filesys/base/sm-seq-block into /tmp/eJkZBoDnjb.dsk...
-Writing command line to /tmp/8yw0gMHt0d.dsk...
-qemu -hda /tmp/8yw0gMHt0d.dsk -hdb /tmp/inEnHvHr1V.dsk -hdc /tmp/eJkZBoDnjb.dsk -hdd /tmp/4j83QTxRri.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/sm-seq-block into /tmp/SPKR87bipI.dsk...
+Writing command line to /tmp/pGvU2n6LtG.dsk...
+qemu -hda /tmp/pGvU2n6LtG.dsk -hdb /tmp/tfMbcOF0R2.dsk -hdc /tmp/SPKR87bipI.dsk -hdd /tmp/IjDTQP2XIh.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put sm-seq-block run sm-seq-block
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
-374 pages available in user pool.
+373 pages available in user pool.
 Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"

@@ -1,2 +1,17 @@
 FAIL
-Run didn't produce any output
+Kernel panic in run: PANIC at ../../userprog/pagedir.c:133 in pagedir_get_page(): assertion `is_user_vaddr (uaddr)' failed.
+Call stack: 0xc0107326 0xc010a3ef 0xc010d466 0xc010aaa4 0xc01017e5 0xc01019bb 0x80480c5 0x804899c
+Translation of call stack:
+In kernel.o:
+0xc0107326: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010a3ef: pagedir_get_page (...../userprog/pagedir.c:135)
+0xc010d466: stack_growth (.../build/../../vm/page.c:86)
+0xc010aaa4: page_fault (.../userprog/exception.c:179)
+0xc01017e5: intr_handler (..../threads/interrupt.c:361)
+0xc01019bb: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/page-merge-stk:
+0x080480c5: init (...ts/vm/parallel-merge.c:24)
+0x0804899c: check_file (...ild/../../tests/lib.c:157)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.

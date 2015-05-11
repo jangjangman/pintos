@@ -1,21 +1,23 @@
-#ifndef VM_PAGE_H
-#define VM_PAGE_H
+#ifndef PAGE_H
+#define PAGE_H
+#include "threads/synch.h"
 #include <hash.h>
-#include "vm/frame.h"
 
-void page_init(struct hash *spt_hash);
-void page_insert(void *upage, void *frame, struct thread *t);
-void page_destroy(struct hash *spt_hash);
+void spt_init (struct thread *);
+void spt_insert (void *, void *, struct thread *);
+void spt_remove (void *, struct thread *);
+void spt_destroy (struct hash_elem *, void *);
+struct spt_entry *spt_find_upage (void *, struct thread *);
+void stack_growth (void *, struct thread *);
 
-
-struct sup_page_entry{
-
+struct spt_entry
+{
+	bool swapped;
 	void *upage;
-	void *frame;
+	uint32_t swap_idx;
+	void *kpage;
 	struct thread *t;
-	uint32_t swap_index;
 
 	struct hash_elem hash_elem;
 };
-
-#endif
+#endif 

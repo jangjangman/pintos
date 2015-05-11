@@ -18,6 +18,8 @@
 #include "threads/malloc.h"
 #include "threads/thread.h"
 #include "threads/vaddr.h"
+#include "vm/frame.h"
+#include "vm/page.h"
 
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
@@ -108,6 +110,9 @@ start_process (void *f_name)
   int count=0;
   char *token, *save_ptr;
   struct thread *curr;
+
+
+  spt_init (thread_current ());
 
   /* Initialize interrupt frame and load executable. */
   memset (&if_, 0, sizeof if_);
@@ -219,9 +224,14 @@ process_exit (void)
   }
 	  
 
+
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
   pd = curr->pagedir;
+
+  frame_clear(curr);
+  hash_destroy(&curr->spt_hash, spt_destroy);
+
   if (pd != NULL) 
     {
       /* Correct ordering here is crucial.  We must set
@@ -233,7 +243,7 @@ process_exit (void)
          that's been freed (and cleared). */
       curr->pagedir = NULL;
       pagedir_activate (NULL);
-      pagedir_destroy (pd);
+  //    pagedir_destroy (pd);
     }
   	file_close(curr->exec);
   	curr->exec=NULL;
@@ -579,9 +589,12 @@ static bool
 install_page (void *upage, void *kpage, bool writable)
 {
   struct thread *t = thread_current ();
-
+	bool result;
   /* Verify that there's not already a page at that virtual
      address, then map our page there. */
-  return (pagedir_get_page (t->pagedir, upage) == NULL
+  result = (pagedir_get_page (t->pagedir, upage) == NULL
           && pagedir_set_page (t->pagedir, upage, kpage, writable));
+	if(result)
+		spt_insert(upage, kpage, t);
+	return result;
 }

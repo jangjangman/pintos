@@ -1,12 +1,12 @@
-Copying tests/userprog/create-normal into /tmp/2KpiTWWKJ2.dsk...
-Writing command line to /tmp/YYSB0Gd8aV.dsk...
-qemu -hda /tmp/YYSB0Gd8aV.dsk -hdb /tmp/AosZhFdGnz.dsk -hdc /tmp/2KpiTWWKJ2.dsk -hdd /tmp/DrbgZ0y5HQ.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/create-normal into /tmp/IpUcfEvHSM.dsk...
+Writing command line to /tmp/YrK90UlKSB.dsk...
+qemu -hda /tmp/YrK90UlKSB.dsk -hdb /tmp/6U1it27WQy.dsk -hdc /tmp/IpUcfEvHSM.dsk -hdd /tmp/ibA05p9pYf.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put create-normal run create-normal
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
-374 pages available in user pool.
+373 pages available in user pool.
 Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 73 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"

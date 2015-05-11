@@ -1,13 +1,13 @@
-Copying tests/vm/pt-write-code2 into /tmp/K8yGaWKSmo.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/K8yGaWKSmo.dsk...
-Writing command line to /tmp/dmdYUETfGJ.dsk...
-qemu -hda /tmp/dmdYUETfGJ.dsk -hdb /tmp/mjLXTffoa2.dsk -hdc /tmp/K8yGaWKSmo.dsk -hdd /tmp/xil2K5zdiv.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-write-code2 into /tmp/1pDSxNUfNZ.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/1pDSxNUfNZ.dsk...
+Writing command line to /tmp/WqMA2CRZuy.dsk...
+qemu -hda /tmp/WqMA2CRZuy.dsk -hdb /tmp/QLN9Yalwf2.dsk -hdc /tmp/1pDSxNUfNZ.dsk -hdd /tmp/5FjhkLEqQ1.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-write-code2 put sample.txt run pt-write-code2
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
-374 pages available in user pool.
+373 pages available in user pool.
 Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
@@ -18,24 +18,15 @@ Putting 'sample.txt' into the file system...
 Executing 'pt-write-code2':
 (pt-write-code2) begin
 (pt-write-code2) open "sample.txt"
-Page fault at 0x80480a0: rights violation error writing page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0106776
- cr2=080480a0 error=00000003
- eax=0000003d ebx=c011920d ecx=00000000 edx=08048001
- esi=080480a0 edi=080480a0 esp=c011186c ebp=c011cef4
- cs=0008 ds=0010 es=0010 ss=920c
-Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc0107306 0xc010a90f 0xc010a9ec 0xc01017d5 0xc01019ab 0xc0106776 0xc010c5b9 0xc010ba7e 0xc010af11 0xc010ab7a 0xc01017d5 0xc01019ab 0x804a091 0x80480e7 0x80486d3 0x8048700.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
+pt-write-code2: exit(-1)
+Execution of 'pt-write-code2' complete.
 Timer: 65 ticks
-Thread: 0 idle ticks, 63 kernel ticks, 2 user ticks
+Thread: 0 idle ticks, 64 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 94 reads, 162 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1700 characters output
+Console: 1016 characters output
 Keyboard: 0 keys pressed
 Exception: 1 page faults
 Powering off...

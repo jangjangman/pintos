@@ -1,12 +1,12 @@
-Copying tests/userprog/args-none into /tmp/fsBpbQFeXC.dsk...
-Writing command line to /tmp/VJFK1oLvXs.dsk...
-qemu -hda /tmp/VJFK1oLvXs.dsk -hdb /tmp/YLDG0E63fX.dsk -hdc /tmp/fsBpbQFeXC.dsk -hdd /tmp/jPiDN9QFva.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/args-none into /tmp/w6U3hAOX0K.dsk...
+Writing command line to /tmp/MUUIoSn9u4.dsk...
+qemu -hda /tmp/MUUIoSn9u4.dsk -hdb /tmp/xo8LnXRzqP.dsk -hdc /tmp/w6U3hAOX0K.dsk -hdd /tmp/4eTwu63LHV.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put args-none run args-none
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
-374 pages available in user pool.
+373 pages available in user pool.
 Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 72 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"

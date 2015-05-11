@@ -1,6 +1,6 @@
-vm/frame.o: ../../vm/frame.c ../../threads/vaddr.h ../../lib/debug.h \
-  ../../lib/stdint.h ../../lib/stdbool.h ../../threads/loader.h \
-  ../../threads/malloc.h ../../lib/stddef.h ../../threads/thread.h \
-  ../../lib/kernel/list.h ../../threads/synch.h ../../lib/kernel/hash.h \
-  ../../lib/kernel/list.h ../../lib/kernel/bitmap.h ../../lib/inttypes.h \
-  ../../vm/frame.h ../../threads/synch.h ../../vm/page.h
+vm/frame.o: ../../vm/frame.c ../../vm/frame.h ../../threads/thread.h \
+  ../../lib/debug.h ../../lib/kernel/list.h ../../lib/stdbool.h \
+  ../../lib/stddef.h ../../lib/stdint.h ../../threads/synch.h \
+  ../../lib/kernel/hash.h ../../lib/kernel/list.h ../../threads/synch.h \
+  ../../vm/page.h ../../lib/kernel/bitmap.h ../../lib/inttypes.h \
+  ../../threads/vaddr.h ../../threads/loader.h

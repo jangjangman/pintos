@@ -1,25 +1,20 @@
-#ifndef VM_FRAME_H
-#define VM_FRAME_H
-
-#include "threads/synch.h"
 #include "threads/thread.h"
-#include <list.h>
-#include "vm/page.h"
+#include "threads/synch.h"
 
-struct lock frame_lock;
-struct list frame_list;
-struct bitmap *frame_alloc;
-
-struct frame_entry{
-	void *frame;
-	struct sup_page_entry *spte;
+struct frame_entry
+{
+	void *upage;
+	void *kpage;
 	struct thread *t;
-	struct list_elem elem;
+	struct list_elem list_elem;
 };
 
-void frame_init(void);
-void frame_insert(struct sup_page_entry *spte, void *frame);
-void frame_remove(void *frame);
+struct list frame_list;
+struct lock frame_lock;
+struct bitmap *frame_alloc;
 
-
-#endif
+void frame_init (void);
+void frame_insert (void *, void *, struct thread *);
+void frame_remove (void *);
+void *frame_get (void);
+void frame_clear (struct thread *);
