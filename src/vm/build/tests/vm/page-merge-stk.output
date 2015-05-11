@@ -1,7 +1,7 @@
-Copying tests/vm/page-merge-stk into /tmp/z77fQAdZAg.dsk...
-Copying tests/vm/child-qsort into /tmp/z77fQAdZAg.dsk...
-Writing command line to /tmp/ZABxUU3Vd7.dsk...
-qemu -hda /tmp/ZABxUU3Vd7.dsk -hdb /tmp/pNdUybO3uA.dsk -hdc /tmp/z77fQAdZAg.dsk -hdd /tmp/uXM7Fp13in.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-merge-stk into /tmp/WpbuzHwPdy.dsk...
+Copying tests/vm/child-qsort into /tmp/WpbuzHwPdy.dsk...
+Writing command line to /tmp/RNFRwHwRCV.dsk...
+qemu -hda /tmp/RNFRwHwRCV.dsk -hdb /tmp/fBcZRS6d6L.dsk -hdc /tmp/WpbuzHwPdy.dsk -hdd /tmp/NBPlMUeNbm.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-merge-stk put child-qsort run page-merge-stk
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -19,18 +19,42 @@ Executing 'page-merge-stk':
 (page-merge-stk) begin
 (page-merge-stk) init
 (page-merge-stk) sort chunk 0
-Kernel PANIC at ../../userprog/pagedir.c:133 in pagedir_get_page(): assertion `is_user_vaddr (uaddr)' failed.
-Call stack: 0xc0107326 0xc010a3ef 0xc010d466 0xc010aaa4 0xc01017e5 0xc01019bb 0x80480c5 0x804899c.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 266 ticks
-Thread: 0 idle ticks, 72 kernel ticks, 194 user ticks
+(page-merge-stk) sort chunk 1
+(page-merge-stk) sort chunk 2
+child-qsort: exit(72)
+(page-merge-stk) sort chunk 3
+child-qsort: exit(72)
+(page-merge-stk) sort chunk 4
+child-qsort: exit(72)
+(page-merge-stk) sort chunk 5
+child-qsort: exit(72)
+(page-merge-stk) sort chunk 6
+child-qsort: exit(72)
+(page-merge-stk) sort chunk 7
+child-qsort: exit(72)
+(page-merge-stk) wait for child 0
+(page-merge-stk) wait for child 1
+(page-merge-stk) wait for child 2
+(page-merge-stk) wait for child 3
+(page-merge-stk) wait for child 4
+(page-merge-stk) wait for child 5
+(page-merge-stk) wait for child 6
+child-qsort: exit(72)
+(page-merge-stk) wait for child 7
+child-qsort: exit(72)
+(page-merge-stk) merge
+(page-merge-stk) verify
+(page-merge-stk) success, buf_idx=1,048,576
+(page-merge-stk) end
+page-merge-stk: exit(0)
+Execution of 'page-merge-stk' complete.
+Timer: 688 ticks
+Thread: 0 idle ticks, 73 kernel ticks, 615 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 161 reads, 846 writes
+hd0:1: 4925 reads, 6506 writes
 hd1:0: 160 reads, 0 writes
-hd1:1: 2088 reads, 3304 writes
-Console: 1345 characters output
+hd1:1: 4584 reads, 5744 writes
+Console: 1818 characters output
 Keyboard: 0 keys pressed
-Exception: 262 page faults
+Exception: 581 page faults
 Powering off...

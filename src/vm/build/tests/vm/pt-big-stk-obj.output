@@ -1,6 +1,6 @@
-Copying tests/vm/pt-big-stk-obj into /tmp/j5FAkQHLQd.dsk...
-Writing command line to /tmp/vPXk5j1asc.dsk...
-qemu -hda /tmp/vPXk5j1asc.dsk -hdb /tmp/Up9mO01pG1.dsk -hdc /tmp/j5FAkQHLQd.dsk -hdd /tmp/4Gh4y33hzT.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-big-stk-obj into /tmp/wVGK8BSvo1.dsk...
+Writing command line to /tmp/03TaDDnI6c.dsk...
+qemu -hda /tmp/03TaDDnI6c.dsk -hdb /tmp/JumY6ZiwTq.dsk -hdc /tmp/wVGK8BSvo1.dsk -hdd /tmp/n6QTg6UFET.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-big-stk-obj run pt-big-stk-obj
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -15,18 +15,17 @@ Boot complete.
 Putting 'pt-big-stk-obj' into the file system...
 Executing 'pt-big-stk-obj':
 (pt-big-stk-obj) begin
-Kernel PANIC at ../../userprog/pagedir.c:133 in pagedir_get_page(): assertion `is_user_vaddr (uaddr)' failed.
-Call stack: 0xc0107326 0xc010a3ef 0xc010d466 0xc010aaa4 0xc01017e5 0xc01019bb 0x80480ab 0x8048883 0x80488b0.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
+(pt-big-stk-obj) cksum: 3256410166
+(pt-big-stk-obj) end
+pt-big-stk-obj: exit(0)
+Execution of 'pt-big-stk-obj' complete.
 Timer: 65 ticks
-Thread: 0 idle ticks, 64 kernel ticks, 1 user ticks
+Thread: 0 idle ticks, 63 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 70 reads, 170 writes
 hd1:0: 81 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1229 characters output
+Console: 976 characters output
 Keyboard: 0 keys pressed
 Exception: 1 page faults
 Powering off...

@@ -1,6 +1,6 @@
-Copying tests/userprog/bad-jump into /tmp/xRFD1ORzSG.dsk...
-Writing command line to /tmp/RAmFgvRp8h.dsk...
-qemu -hda /tmp/RAmFgvRp8h.dsk -hdb /tmp/xpSYHlKBzY.dsk -hdc /tmp/xRFD1ORzSG.dsk -hdd /tmp/lGkJB7lSYh.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/bad-jump into /tmp/saEa4gLz6Y.dsk...
+Writing command line to /tmp/gTPqqqCf0S.dsk...
+qemu -hda /tmp/gTPqqqCf0S.dsk -hdb /tmp/ta8FMlx1Va.dsk -hdc /tmp/saEa4gLz6Y.dsk -hdd /tmp/Hlm3N0lbrg.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put bad-jump run bad-jump
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -18,7 +18,7 @@ Executing 'bad-jump':
 bad-jump: exit(-1)
 Execution of 'bad-jump' complete.
 Timer: 64 ticks
-Thread: 0 idle ticks, 64 kernel ticks, 0 user ticks
+Thread: 0 idle ticks, 63 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 62 reads, 154 writes
 hd1:0: 73 reads, 0 writes

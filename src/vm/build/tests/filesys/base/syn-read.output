@@ -1,7 +1,7 @@
-Copying tests/filesys/base/syn-read into /tmp/Gi56smgGl4.dsk...
-Copying tests/filesys/base/child-syn-read into /tmp/Gi56smgGl4.dsk...
-Writing command line to /tmp/ci0HJqHwSW.dsk...
-qemu -hda /tmp/ci0HJqHwSW.dsk -hdb /tmp/9lH4oSCH1t.dsk -hdc /tmp/Gi56smgGl4.dsk -hdd /tmp/rwummI2fgi.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/syn-read into /tmp/aqDf1W14wL.dsk...
+Copying tests/filesys/base/child-syn-read into /tmp/aqDf1W14wL.dsk...
+Writing command line to /tmp/x5q4uRs2fs.dsk...
+qemu -hda /tmp/x5q4uRs2fs.dsk -hdb /tmp/Txwo0BK83r.dsk -hdc /tmp/aqDf1W14wL.dsk -hdd /tmp/4eId4IoCvF.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put syn-read put child-syn-read run syn-read
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -31,20 +31,20 @@ Executing 'syn-read':
 (syn-read) exec child 8 of 10: "child-syn-read 7"
 (syn-read) exec child 9 of 10: "child-syn-read 8"
 (syn-read) exec child 10 of 10: "child-syn-read 9"
+child-syn-read: exit(2)
 child-syn-read: exit(5)
+child-syn-read: exit(1)
 child-syn-read: exit(6)
-child-syn-read: exit(7)
 child-syn-read: exit(0)
-child-syn-read: exit(9)
+child-syn-read: exit(3)
 child-syn-read: exit(8)
 (syn-read) wait for child 1 of 10 returned 0 (expected 0)
-child-syn-read: exit(2)
-child-syn-read: exit(1)
-child-syn-read: exit(4)
-child-syn-read: exit(3)
 (syn-read) wait for child 2 of 10 returned 1 (expected 1)
 (syn-read) wait for child 3 of 10 returned 2 (expected 2)
 (syn-read) wait for child 4 of 10 returned 3 (expected 3)
+child-syn-read: exit(9)
+child-syn-read: exit(7)
+child-syn-read: exit(4)
 (syn-read) wait for child 5 of 10 returned 4 (expected 4)
 (syn-read) wait for child 6 of 10 returned 5 (expected 5)
 (syn-read) wait for child 7 of 10 returned 6 (expected 6)
@@ -54,10 +54,10 @@ child-syn-read: exit(3)
 (syn-read) end
 syn-read: exit(0)
 Execution of 'syn-read' complete.
-Timer: 112 ticks
-Thread: 0 idle ticks, 72 kernel ticks, 40 user ticks
+Timer: 111 ticks
+Thread: 0 idle ticks, 73 kernel ticks, 38 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 10761 reads, 340 writes
+hd0:1: 10766 reads, 340 writes
 hd1:0: 161 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 2386 characters output

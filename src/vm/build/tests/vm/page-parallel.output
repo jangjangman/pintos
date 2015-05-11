@@ -1,7 +1,7 @@
-Copying tests/vm/page-parallel into /tmp/zLyrElo10K.dsk...
-Copying tests/vm/child-linear into /tmp/zLyrElo10K.dsk...
-Writing command line to /tmp/b4lUmz9hzi.dsk...
-qemu -hda /tmp/b4lUmz9hzi.dsk -hdb /tmp/7YzIdd8hG9.dsk -hdc /tmp/zLyrElo10K.dsk -hdd /tmp/0jUe92jEre.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-parallel into /tmp/3FlKOTuAE1.dsk...
+Copying tests/vm/child-linear into /tmp/3FlKOTuAE1.dsk...
+Writing command line to /tmp/IGhGX70OjL.dsk...
+qemu -hda /tmp/IGhGX70OjL.dsk -hdb /tmp/lYQ4mMkPqQ.dsk -hdc /tmp/3FlKOTuAE1.dsk -hdd /tmp/qIcy6pNFGy.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-parallel put child-linear run page-parallel
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -19,19 +19,26 @@ Executing 'page-parallel':
 (page-parallel) begin
 (page-parallel) exec "child-linear"
 (page-parallel) exec "child-linear"
-child-linear: exit(-1)
-Kernel PANIC at ../../threads/synch.c:198 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc0107326 0xc01028f6 0xc010d71f 0xc010d4ba 0xc0108b0f 0xc0108b59 0xc0109826 0xc0100c0e 0xc010ad96 0xc010aad4 0xc01017e5 0xc01019bb 0xc010d5da 0xc010d1e6 0xc010d198 0xc010aaeb 0xc01017e5 0xc01019bb 0x804825a 0x8048136 0x804884c.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 170 ticks
-Thread: 0 idle ticks, 69 kernel ticks, 101 user ticks
+child-linear: exit(66)
+(page-parallel) exec "child-linear"
+child-linear: exit(66)
+(page-parallel) exec "child-linear"
+child-linear: exit(66)
+(page-parallel) wait for child 0
+(page-parallel) wait for child 1
+(page-parallel) wait for child 2
+child-linear: exit(66)
+(page-parallel) wait for child 3
+(page-parallel) end
+page-parallel: exit(0)
+Execution of 'page-parallel' complete.
+Timer: 346 ticks
+Thread: 0 idle ticks, 70 kernel ticks, 276 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 167 reads, 308 writes
+hd0:1: 245 reads, 308 writes
 hd1:0: 149 reads, 0 writes
-hd1:1: 544 reads, 1800 writes
-Console: 1533 characters output
+hd1:1: 3664 reads, 4768 writes
+Console: 1377 characters output
 Keyboard: 0 keys pressed
-Exception: 70 page faults
+Exception: 458 page faults
 Powering off...

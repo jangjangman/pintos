@@ -1,6 +1,6 @@
-Copying tests/vm/pt-grow-pusha into /tmp/Qrf6TvKn9S.dsk...
-Writing command line to /tmp/MUXd2xdPxD.dsk...
-qemu -hda /tmp/MUXd2xdPxD.dsk -hdb /tmp/0il3T8t7Go.dsk -hdc /tmp/Qrf6TvKn9S.dsk -hdd /tmp/9IYBSGuO7C.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-grow-pusha into /tmp/oyZgkrWNXe.dsk...
+Writing command line to /tmp/F7GGkPMYe6.dsk...
+qemu -hda /tmp/F7GGkPMYe6.dsk -hdb /tmp/sOevDBw4lO.dsk -hdc /tmp/oyZgkrWNXe.dsk -hdd /tmp/bvCGdO3UsH.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-grow-pusha run pt-grow-pusha
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -15,18 +15,16 @@ Boot complete.
 Putting 'pt-grow-pusha' into the file system...
 Executing 'pt-grow-pusha':
 (pt-grow-pusha) begin
-Kernel PANIC at ../../userprog/pagedir.c:133 in pagedir_get_page(): assertion `is_user_vaddr (uaddr)' failed.
-Call stack: 0xc0107326 0xc010a3ef 0xc010d466 0xc010aaa4 0xc01017e5 0xc01019bb 0x80480ab 0x804868f 0x80486bc.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 65 ticks
-Thread: 0 idle ticks, 64 kernel ticks, 1 user ticks
+(pt-grow-pusha) end
+pt-grow-pusha: exit(0)
+Execution of 'pt-grow-pusha' complete.
+Timer: 64 ticks
+Thread: 0 idle ticks, 63 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 61 reads, 154 writes
 hd1:0: 73 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1224 characters output
+Console: 933 characters output
 Keyboard: 0 keys pressed
 Exception: 1 page faults
 Powering off...
