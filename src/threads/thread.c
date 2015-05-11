@@ -14,6 +14,7 @@
 #ifdef USERPROG
 #include "userprog/process.h"
 #endif
+#include "vm/frame.h"
 
 /* Random value for struct thread's `magic' member.
    Used to detect stack overflow.  See the big comment at the top
@@ -91,6 +92,8 @@ thread_init (void)
 
   lock_init (&tid_lock);
   list_init (&ready_list);
+
+//  frame_init();
 
   /* Set up a thread structure for the running thread. */
   initial_thread = running_thread ();
@@ -455,7 +458,6 @@ init_thread (struct thread *t, const char *name, int priority)
   list_init (&t->childs);
   list_init (&t->files);
   sema_init (&t->sema_wait, 0);
-  sema_init (&t->sema_exit, 0);
   sema_init (&t->load_wait, 0);
   t->cur_fd = 2;
 }
