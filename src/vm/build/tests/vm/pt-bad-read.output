@@ -1,7 +1,7 @@
-Copying tests/vm/pt-bad-read into /tmp/0zb7DYGUoV.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/0zb7DYGUoV.dsk...
-Writing command line to /tmp/vIFFza6XWP.dsk...
-qemu -hda /tmp/vIFFza6XWP.dsk -hdb /tmp/MVMu8LUPtt.dsk -hdc /tmp/0zb7DYGUoV.dsk -hdd /tmp/c5MeAy6uer.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-bad-read into /tmp/PiPiwuDQlD.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/PiPiwuDQlD.dsk...
+Writing command line to /tmp/YXSxFdYefG.dsk...
+qemu -hda /tmp/YXSxFdYefG.dsk -hdb /tmp/j1MlYrdC2Z.dsk -hdc /tmp/PiPiwuDQlD.dsk -hdd /tmp/VKa0qJGK6W.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-bad-read put sample.txt run pt-bad-read
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -20,13 +20,13 @@ Executing 'pt-bad-read':
 (pt-bad-read) open "sample.txt"
 pt-bad-read: exit(-1)
 Execution of 'pt-bad-read' complete.
-Timer: 65 ticks
-Thread: 0 idle ticks, 64 kernel ticks, 1 user ticks
+Timer: 64 ticks
+Thread: 0 idle ticks, 63 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 93 reads, 162 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 992 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 4 page faults
 Powering off...

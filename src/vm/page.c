@@ -20,7 +20,7 @@ bool page_cmp (const struct hash_elem *a, const struct hash_elem *b, void *aux U
 }
 
 static struct spt_entry
-*init_entry (void *upage, void *kpage, struct thread *t)
+*init_entry (void *upage, void *kpage, bool writable, struct thread *t)
 {
 	struct spt_entry *spte;
 	spte = (struct spt_entry *)malloc (sizeof (struct spt_entry));
@@ -29,6 +29,13 @@ static struct spt_entry
 	spte->kpage = kpage;
 	spte->t = t;
 
+	spte->lazy = false;
+	spte->zero = false;
+	spte->writable = writable;
+	spte->file = false;
+	spte->offset = 0;
+	spte->read_bytes = 0;
+	
 	return spte;
 }
 
@@ -39,9 +46,9 @@ void spt_init (struct thread *t)
 }
 
 /* Insert supplement page table entry */
-void spt_insert (void *upage, void *kpage, struct thread *t)
+void spt_insert (void *upage, void *kpage, bool writable, struct thread *t)
 {
-	struct spt_entry *spte = init_entry (upage, kpage, t);
+	struct spt_entry *spte = init_entry (upage, kpage, writable, t);
 	hash_insert (&t->spt_hash, &spte->hash_elem);
 	frame_insert (upage, kpage-PHYS_BASE, t);
 }	
@@ -84,7 +91,7 @@ void stack_growth(void *upage, struct thread *t)
 	new = palloc_get_page (PAL_USER);
   pagedir_get_page (t->pagedir, upage);
   pagedir_set_page (t->pagedir, upage, new, true);
-	spt_insert (upage, new, t);
+	spt_insert (upage, new, true, t);
 }
 
 void spt_destroy (struct hash_elem *elem, void *aux)
@@ -94,4 +101,23 @@ void spt_destroy (struct hash_elem *elem, void *aux)
 		swap_clear (spte->swap_idx);
 	}
 	free (spte);
+}
+
+void spt_lazy (void *upage, bool zero, struct file *file, off_t offs, size_t read_bytes, bool writable, struct thread *t)
+{
+	struct spt_entry *spte;
+	spte = (struct spt_entry *)malloc (sizeof (struct spt_entry));
+	spte->swapped = false;
+	spte->upage = upage;
+	spte->kpage = NULL;
+	spte->t = t;
+								
+	spte->lazy = true;
+	spte->zero = zero;
+	spte->writable = writable;
+	spte->file = file;
+	spte->offset = offs;
+	spte->read_bytes = read_bytes;
+
+	hash_insert (&t->spt_hash, &spte->hash_elem);
 }

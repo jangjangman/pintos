@@ -1,6 +1,6 @@
-Copying tests/vm/pt-big-stk-obj into /tmp/wVGK8BSvo1.dsk...
-Writing command line to /tmp/03TaDDnI6c.dsk...
-qemu -hda /tmp/03TaDDnI6c.dsk -hdb /tmp/JumY6ZiwTq.dsk -hdc /tmp/wVGK8BSvo1.dsk -hdd /tmp/n6QTg6UFET.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-big-stk-obj into /tmp/kVG2CAYcWk.dsk...
+Writing command line to /tmp/wUc35SnpVR.dsk...
+qemu -hda /tmp/wUc35SnpVR.dsk -hdb /tmp/UQhKKSndMO.dsk -hdc /tmp/kVG2CAYcWk.dsk -hdd /tmp/7scG9shauN.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-big-stk-obj run pt-big-stk-obj
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -19,13 +19,13 @@ Executing 'pt-big-stk-obj':
 (pt-big-stk-obj) end
 pt-big-stk-obj: exit(0)
 Execution of 'pt-big-stk-obj' complete.
-Timer: 65 ticks
-Thread: 0 idle ticks, 63 kernel ticks, 2 user ticks
+Timer: 67 ticks
+Thread: 0 idle ticks, 66 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 70 reads, 170 writes
 hd1:0: 81 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 976 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 6 page faults
 Powering off...

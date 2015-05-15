@@ -11,4 +11,4 @@ userprog/process.o: ../../userprog/process.c ../../userprog/process.h \
   ../../threads/interrupt.h ../../threads/palloc.h ../../threads/malloc.h \
   ../../threads/vaddr.h ../../threads/loader.h ../../vm/frame.h \
   ../../threads/thread.h ../../threads/synch.h ../../vm/page.h \
-  ../../userprog/syscall.h
+  ../../filesys/off_t.h ../../userprog/syscall.h

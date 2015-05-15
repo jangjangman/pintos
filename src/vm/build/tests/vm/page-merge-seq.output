@@ -1,7 +1,7 @@
-Copying tests/vm/page-merge-seq into /tmp/5Ak54ch8HN.dsk...
-Copying tests/vm/child-sort into /tmp/5Ak54ch8HN.dsk...
-Writing command line to /tmp/V0kKagbzEr.dsk...
-qemu -hda /tmp/V0kKagbzEr.dsk -hdb /tmp/ARedsTvZM2.dsk -hdc /tmp/5Ak54ch8HN.dsk -hdd /tmp/eKo5vp9Xn3.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-merge-seq into /tmp/0KDTYelLxD.dsk...
+Copying tests/vm/child-sort into /tmp/0KDTYelLxD.dsk...
+Writing command line to /tmp/0ZChWPM11f.dsk...
+qemu -hda /tmp/0ZChWPM11f.dsk -hdb /tmp/tMCDg7h7zl.dsk -hdc /tmp/0KDTYelLxD.dsk -hdd /tmp/Xqf2HABE2P.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-merge-seq put child-sort run page-merge-seq
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -56,13 +56,13 @@ child-sort: exit(123)
 (page-merge-seq) end
 page-merge-seq: exit(0)
 Execution of 'page-merge-seq' complete.
-Timer: 565 ticks
-Thread: 0 idle ticks, 71 kernel ticks, 494 user ticks
+Timer: 372 ticks
+Thread: 0 idle ticks, 74 kernel ticks, 298 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 5026 reads, 4478 writes
+hd0:1: 4898 reads, 4478 writes
 hd1:0: 153 reads, 0 writes
-hd1:1: 4528 reads, 5624 writes
-Console: 1966 characters output
+hd1:1: 464 reads, 1560 writes
+Console: 1965 characters output
 Keyboard: 0 keys pressed
-Exception: 566 page faults
+Exception: 903 page faults
 Powering off...
