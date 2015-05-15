@@ -2,11 +2,14 @@
 #include <inttypes.h>
 #include <stdio.h>
 #include "vm/frame.h"
+#include "vm/page.h"
 #include "userprog/gdt.h"
 #include "threads/interrupt.h"
 #include "threads/thread.h"
 #include "threads/vaddr.h"
+#include "threads/palloc.h"
 #include "userprog/syscall.h"
+#include "userprog/pagedir.h"
 /* Number of page faults processed. */
 static long long page_fault_cnt;
 
@@ -173,11 +176,13 @@ page_fault (struct intr_frame *f)
   /* Stack growth */
   if (spte == NULL){
 	  if (!is_kernel_vaddr (fault_addr) && user && not_present && growth){
+		  lock_acquire(&frame_lock);
 		  uint8_t *pgalloc, *upage;
 		  upage = (unsigned)fault_addr / PGSIZE;
 		  upage = (unsigned)upage * PGSIZE;
 		  for (pgalloc = t->stack_limit - PGSIZE; pgalloc >= upage; pgalloc -= PGSIZE)
 			  stack_growth(pgalloc, t);
+		  lock_release(&frame_lock);
 		  return;
 	  }
 
@@ -185,7 +190,71 @@ page_fault (struct intr_frame *f)
 		  syscall_exit (-1);
 
   }
-  if (not_present)
+
+  if (not_present && spte->lazy == true)
+  {
+	  // Lazy Load 
+	  lock_acquire (&frame_lock);
+	  uint8_t *kpage = palloc_get_page (PAL_USER);
+	  pagedir_set_page (t->pagedir, spte->upage, kpage, spte->writable);
+
+	  if (spte->zero)
+		  memset (kpage, 0, PGSIZE);
+	  else
+	  {
+		  int bytes = file_read_at (spte->file, kpage, spte->read_bytes, spte->offset);
+		  if (bytes != PGSIZE)
+			  memset (kpage+bytes, 0, PGSIZE-bytes);
+	  }
+	  //hex_dump ((int)kpage, kpage, PGSIZE, true);
+	  frame_insert (spte->upage, (unsigned)kpage-0xc0000000, t);
+	  spte->lazy = false;
+	  spte->kpage = kpage;												
+	  
+	  lock_release (&frame_lock);										
+
+	  return;
+  }
+
+  /*
+  if (not_present && spte->lazy == true)
+  {
+//	  printf ("lazy load!\n");
+	  // Lazy Load 
+	  lock_acquire (&frame_lock);
+
+	  // Get a page of memory 
+	  uint8_t *kpage = palloc_get_page (PAL_USER);
+
+	  if (spte->zero)
+		  memset (kpage, 0, PGSIZE);
+
+	  else
+	  {
+		  off_t pos = file_tell (spte->file);
+
+		  // Load this page from disk by offset 
+		  if (file_read_at (spte->file, kpage, PGSIZE, spte->offset) != PGSIZE)
+		  {
+			  file_seek (spte->file, pos);
+			  palloc_free_page (kpage);
+			  lock_release (&frame_lock);
+			  return false;
+		  }
+		  file_seek (spte->file, pos);
+	  }
+
+	  pagedir_set_page (t->pagedir, spte->upage, kpage, spte->writable);
+	  frame_insert (spte->upage, (unsigned)kpage-0xc0000000, t);
+	  //printf ("%x %x\n", spte->upage, kpage);
+
+	  spte->lazy = false;
+	  spte->kpage = kpage;
+	  lock_release (&frame_lock);
+	  return;
+  }
+*/
+  else if (not_present)
   {
 	  lock_acquire (&frame_lock);
 

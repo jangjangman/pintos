@@ -1,6 +1,6 @@
-Copying tests/vm/pt-write-code into /tmp/4EGls24wg6.dsk...
-Writing command line to /tmp/AK3YNPyf0E.dsk...
-qemu -hda /tmp/AK3YNPyf0E.dsk -hdb /tmp/9qGHHun2BP.dsk -hdc /tmp/4EGls24wg6.dsk -hdd /tmp/RoF0CoPdbo.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-write-code into /tmp/sbPX3GKufl.dsk...
+Writing command line to /tmp/S6Wp7ymmfy.dsk...
+qemu -hda /tmp/S6Wp7ymmfy.dsk -hdb /tmp/vE90erunuJ.dsk -hdc /tmp/sbPX3GKufl.dsk -hdd /tmp/oUyoT5i0Y3.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-write-code run pt-write-code
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -17,8 +17,8 @@ Executing 'pt-write-code':
 (pt-write-code) begin
 pt-write-code: exit(-1)
 Execution of 'pt-write-code' complete.
-Timer: 65 ticks
-Thread: 0 idle ticks, 64 kernel ticks, 1 user ticks
+Timer: 64 ticks
+Thread: 0 idle ticks, 63 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 62 reads, 154 writes
 hd1:0: 73 reads, 0 writes

@@ -20,6 +20,7 @@
 #include "threads/vaddr.h"
 #include "vm/frame.h"
 #include "vm/page.h"
+#include "userprog/syscall.h"
 
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
@@ -175,6 +176,8 @@ process_wait (tid_t child_tid)
 	struct thread_info *ip;
 	struct thread *curr = thread_current();
 	
+	if(&curr->childs == NULL)
+		return -1;
 
 	for(e=list_begin(&curr->childs); e!=list_end(&curr->childs); e=list_next(e)){
 		ip = list_entry(e, struct thread_info, info_elem);
@@ -212,14 +215,27 @@ process_exit (void)
   uint32_t *pd;
   struct list_elem *e;
   struct user_file *uf;
+  struct mmap_info *mip;
 
   //if (curr->exec != NULL)
 	//  file_allow_write (curr->exec);
 
+	while (list_size (&curr->mmap_table) > 0)
+	{	
+		e = list_front (&curr->mmap_table);	
+		mip = list_entry (e, struct mmap_info, elem);	
+		if (mip->mapid != -1) 		
+			syscall_munmap(mip->mapid);
+		list_remove (e);
+		free(mip);
+	}
+
   while (!list_empty (&curr->files)){
 	  e=list_pop_front(&curr->files);
 	  uf=list_entry(e,struct user_file, elem);
+	  lock_acquire(&syscall_lock);
 	  file_close(uf->file);
+	  lock_release(&syscall_lock);
 	  free(uf);
   }
 	  
@@ -228,9 +244,12 @@ process_exit (void)
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
   pd = curr->pagedir;
+  lock_acquire(&frame_lock);
 
   frame_clear(curr);
   hash_destroy(&curr->spt_hash, spt_destroy);
+
+  lock_release(&frame_lock);
 
   if (pd != NULL) 
     {
@@ -519,6 +538,8 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
   ASSERT (pg_ofs (upage) == 0);
   ASSERT (ofs % PGSIZE == 0);
 
+  unsigned load_offset = ofs;
+
   file_seek (file, ofs);
   while (read_bytes > 0 || zero_bytes > 0) 
     {
@@ -528,12 +549,19 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
       size_t page_read_bytes = read_bytes < PGSIZE ? read_bytes : PGSIZE;
       size_t page_zero_bytes = PGSIZE - page_read_bytes;
 
-      /* Get a page of memory. */
+	  if (page_zero_bytes == PGSIZE)
+		  spt_lazy (upage, true, file, load_offset, page_read_bytes, writable, thread_current ());
+	  else
+		  spt_lazy (upage, false, file, load_offset, page_read_bytes, writable, thread_current ());
+/*
+	  lock_acquire(&frame_lock);
+      
+	  // Get a page of memory. 
       uint8_t *kpage = palloc_get_page (PAL_USER);
       if (kpage == NULL)
         return false;
 
-      /* Load this page. */
+      // Load this page. 
       if (file_read (file, kpage, page_read_bytes) != (int) page_read_bytes)
         {
           palloc_free_page (kpage);
@@ -541,17 +569,20 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
         }
       memset (kpage + page_read_bytes, 0, page_zero_bytes);
 
-      /* Add the page to the process's address space. */
+      // Add the page to the process's address space. 
       if (!install_page (upage, kpage, writable)) 
         {
           palloc_free_page (kpage);
           return false; 
         }
 
+	  lock_release(&frame_lock);
+*/
       /* Advance. */
       read_bytes -= page_read_bytes;
       zero_bytes -= page_zero_bytes;
       upage += PGSIZE;
+	  load_offset += PGSIZE;
     }
   return true;
 }
@@ -564,6 +595,8 @@ setup_stack (void **esp)
   uint8_t *kpage;
   bool success = false;
 
+  lock_acquire(&frame_lock);
+
   kpage = palloc_get_page (PAL_USER | PAL_ZERO);
   if (kpage != NULL) 
     {
@@ -573,6 +606,9 @@ setup_stack (void **esp)
       else
         palloc_free_page (kpage);
     }
+
+  lock_release(&frame_lock);
+
   return success;
 }
 
@@ -595,6 +631,6 @@ install_page (void *upage, void *kpage, bool writable)
   result = (pagedir_get_page (t->pagedir, upage) == NULL
           && pagedir_set_page (t->pagedir, upage, kpage, writable));
 	if(result)
-		spt_insert(upage, kpage, t);
+		spt_insert(upage, kpage, writable, t);
 	return result;
 }

@@ -112,8 +112,13 @@ struct thread
 	
     unsigned magic;                     /* Detects stack overflow. */
     
+	/* vm */
 	struct hash spt_hash;
-	
+
+	/*mmap*/
+	struct list mmap_table;
+	int cur_mapid;
+
 	uint8_t *stack_limit;
   };
 
@@ -134,6 +139,14 @@ struct thread_info
 	  bool exited;							
 	  bool waited;						
   };
+
+struct mmap_info
+{
+	int mapid;
+	struct file *f;
+	void *addr;
+	struct list_elem elem;
+};
 
 /* If false (default), use round-robin scheduler.
    If true, use multi-level feedback queue scheduler.

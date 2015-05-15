@@ -1,6 +1,6 @@
-Copying tests/vm/pt-big-stk-obj into /tmp/kVG2CAYcWk.dsk...
-Writing command line to /tmp/wUc35SnpVR.dsk...
-qemu -hda /tmp/wUc35SnpVR.dsk -hdb /tmp/UQhKKSndMO.dsk -hdc /tmp/kVG2CAYcWk.dsk -hdd /tmp/7scG9shauN.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-big-stk-obj into /tmp/FaJjoIWNZw.dsk...
+Writing command line to /tmp/BHiJ1RKMNq.dsk...
+qemu -hda /tmp/BHiJ1RKMNq.dsk -hdb /tmp/sfdgIOBDJI.dsk -hdc /tmp/FaJjoIWNZw.dsk -hdd /tmp/186ZQ8vSqc.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-big-stk-obj run pt-big-stk-obj
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -19,8 +19,8 @@ Executing 'pt-big-stk-obj':
 (pt-big-stk-obj) end
 pt-big-stk-obj: exit(0)
 Execution of 'pt-big-stk-obj' complete.
-Timer: 67 ticks
-Thread: 0 idle ticks, 66 kernel ticks, 1 user ticks
+Timer: 66 ticks
+Thread: 0 idle ticks, 65 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 70 reads, 170 writes
 hd1:0: 81 reads, 0 writes

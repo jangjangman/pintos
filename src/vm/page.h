@@ -10,6 +10,7 @@ void spt_remove (void *, struct thread *);
 void spt_destroy (struct hash_elem *, void *);
 struct spt_entry *spt_find_upage (void *, struct thread *);
 void stack_growth (void *, struct thread *);
+void spt_lazy (void *upage, bool zero, struct file *file, off_t offs, size_t read_bytes, bool writable, struct thread *t);
 
 struct spt_entry
 {
