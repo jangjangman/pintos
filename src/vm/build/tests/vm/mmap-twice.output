@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-twice into /tmp/fqm1bZBNtP.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/fqm1bZBNtP.dsk...
-Writing command line to /tmp/h5mmyjufOT.dsk...
-qemu -hda /tmp/h5mmyjufOT.dsk -hdb /tmp/Bf5G30NM9G.dsk -hdc /tmp/fqm1bZBNtP.dsk -hdd /tmp/eV3OZNjuyu.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-twice into /tmp/gjXOryHyQP.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/gjXOryHyQP.dsk...
+Writing command line to /tmp/0CebqBbvTH.dsk...
+qemu -hda /tmp/0CebqBbvTH.dsk -hdb /tmp/dX7JwHbUCy.dsk -hdc /tmp/gjXOryHyQP.dsk -hdd /tmp/cwPyBKt9QA.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-twice put sample.txt run mmap-twice
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -22,15 +22,17 @@ Executing 'mmap-twice':
 (mmap-twice) open "sample.txt" #1
 (mmap-twice) mmap "sample.txt" #1 at 0x20000000
 (mmap-twice) compare mmap'd file 0 against data
-mmap-twice: exit(-1)
+(mmap-twice) compare mmap'd file 1 against data
+(mmap-twice) end
+mmap-twice: exit(0)
 Execution of 'mmap-twice' complete.
 Timer: 67 ticks
 Thread: 0 idle ticks, 66 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 104 reads, 168 writes
+hd0:1: 108 reads, 168 writes
 hd1:0: 79 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1166 characters output
+Console: 1230 characters output
 Keyboard: 0 keys pressed
-Exception: 6 page faults
+Exception: 7 page faults
 Powering off...

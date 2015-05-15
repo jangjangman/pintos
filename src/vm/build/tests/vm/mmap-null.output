@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-null into /tmp/tmZtZocy30.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/tmZtZocy30.dsk...
-Writing command line to /tmp/nnvrST0BGY.dsk...
-qemu -hda /tmp/nnvrST0BGY.dsk -hdb /tmp/8G7q46Wk15.dsk -hdc /tmp/tmZtZocy30.dsk -hdd /tmp/Squq4bV4fy.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-null into /tmp/32Ucvrp6Kq.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/32Ucvrp6Kq.dsk...
+Writing command line to /tmp/Jw2zExGaSM.dsk...
+qemu -hda /tmp/Jw2zExGaSM.dsk -hdb /tmp/zi0O6N600f.dsk -hdc /tmp/32Ucvrp6Kq.dsk -hdd /tmp/CxgS0bPCNy.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-null put sample.txt run mmap-null
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -19,16 +19,16 @@ Executing 'mmap-null':
 (mmap-null) begin
 (mmap-null) open "sample.txt"
 (mmap-null) try to mmap at address 0
-(mmap-null) try to mmap at address 0: FAILED
-mmap-null: exit(1)
+(mmap-null) end
+mmap-null: exit(0)
 Execution of 'mmap-null' complete.
-Timer: 66 ticks
-Thread: 0 idle ticks, 65 kernel ticks, 1 user ticks
+Timer: 63 ticks
+Thread: 0 idle ticks, 62 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 93 reads, 162 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1057 characters output
+Console: 1028 characters output
 Keyboard: 0 keys pressed
 Exception: 4 page faults
 Powering off...

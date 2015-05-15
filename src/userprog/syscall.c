@@ -36,6 +36,7 @@ syscall_init (void)
 {
   intr_register_int (0x30, 3, INTR_ON, syscall_handler, "syscall");
   lock_init(&syscall_lock);
+  lock_init(&mmap_lock);
 }
 
 
@@ -114,6 +115,12 @@ syscall_handler (struct intr_frame *f)
 				break;
 			case SYS_CLOSE:
 				syscall_close (f);
+				break;
+			case SYS_MMAP:
+				syscall_mmap (f);
+				break;
+			case SYS_MUNMAP:
+				syscall_munmap (*(int *)(f->esp+4));
 				break;
 		}
 		

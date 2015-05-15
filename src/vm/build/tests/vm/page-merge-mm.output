@@ -1,7 +1,7 @@
-Copying tests/vm/page-merge-mm into /tmp/ULD2dkgfzS.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/ULD2dkgfzS.dsk...
-Writing command line to /tmp/wXvVlIjV0h.dsk...
-qemu -hda /tmp/wXvVlIjV0h.dsk -hdb /tmp/A5Zk39hogL.dsk -hdc /tmp/ULD2dkgfzS.dsk -hdd /tmp/ee5lYWidcF.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-merge-mm into /tmp/t5Xhj5iP3J.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/t5Xhj5iP3J.dsk...
+Writing command line to /tmp/SWj1HINMSc.dsk...
+qemu -hda /tmp/SWj1HINMSc.dsk -hdb /tmp/ZiGZMhOtMf.dsk -hdc /tmp/t5Xhj5iP3J.dsk -hdd /tmp/FRRVLFbaY6.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -20,31 +20,41 @@ Executing 'page-merge-mm':
 (page-merge-mm) init
 (page-merge-mm) sort chunk 0
 (page-merge-mm) sort chunk 1
-child-qsort-mm: exit(-1)
+child-qsort-mm: exit(80)
 (page-merge-mm) sort chunk 2
-child-qsort-mm: exit(-1)
+child-qsort-mm: exit(80)
 (page-merge-mm) sort chunk 3
-child-qsort-mm: exit(-1)
+child-qsort-mm: exit(80)
 (page-merge-mm) sort chunk 4
-child-qsort-mm: exit(-1)
+child-qsort-mm: exit(80)
 (page-merge-mm) sort chunk 5
-child-qsort-mm: exit(-1)
+child-qsort-mm: exit(80)
 (page-merge-mm) sort chunk 6
-child-qsort-mm: exit(-1)
+child-qsort-mm: exit(80)
 (page-merge-mm) sort chunk 7
-child-qsort-mm: exit(-1)
+child-qsort-mm: exit(80)
 (page-merge-mm) wait for child 0
-(page-merge-mm) wait for child 0: FAILED
-page-merge-mm: exit(1)
-child-qsort-mm: exit(-1)
+(page-merge-mm) wait for child 1
+(page-merge-mm) wait for child 2
+(page-merge-mm) wait for child 3
+(page-merge-mm) wait for child 4
+(page-merge-mm) wait for child 5
+(page-merge-mm) wait for child 6
+(page-merge-mm) wait for child 7
+child-qsort-mm: exit(80)
+(page-merge-mm) merge
+(page-merge-mm) verify
+(page-merge-mm) success, buf_idx=1,048,576
+(page-merge-mm) end
+page-merge-mm: exit(0)
 Execution of 'page-merge-mm' complete.
-Timer: 275 ticks
-Thread: 0 idle ticks, 74 kernel ticks, 202 user ticks
+Timer: 751 ticks
+Thread: 0 idle ticks, 90 kernel ticks, 661 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 711 reads, 4458 writes
+hd0:1: 4853 reads, 6506 writes
 hd1:0: 160 reads, 0 writes
-hd1:1: 0 reads, 0 writes
-Console: 1515 characters output
+hd1:1: 456 reads, 1616 writes
+Console: 1819 characters output
 Keyboard: 0 keys pressed
-Exception: 294 page faults
+Exception: 862 page faults
 Powering off...

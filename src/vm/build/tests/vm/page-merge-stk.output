@@ -1,7 +1,7 @@
-Copying tests/vm/page-merge-stk into /tmp/C2KUYLahu7.dsk...
-Copying tests/vm/child-qsort into /tmp/C2KUYLahu7.dsk...
-Writing command line to /tmp/sNxnKfkLZY.dsk...
-qemu -hda /tmp/sNxnKfkLZY.dsk -hdb /tmp/HDCWF8bgkv.dsk -hdc /tmp/C2KUYLahu7.dsk -hdd /tmp/raAIqVMZPY.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-merge-stk into /tmp/DVKDslkQ0W.dsk...
+Copying tests/vm/child-qsort into /tmp/DVKDslkQ0W.dsk...
+Writing command line to /tmp/7qmrAXA2OH.dsk...
+qemu -hda /tmp/7qmrAXA2OH.dsk -hdb /tmp/eyCk39xIAn.dsk -hdc /tmp/DVKDslkQ0W.dsk -hdd /tmp/bzKtUrNz8z.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-merge-stk put child-qsort run page-merge-stk
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -23,8 +23,8 @@ Executing 'page-merge-stk':
 (page-merge-stk) sort chunk 2
 child-qsort: exit(72)
 (page-merge-stk) sort chunk 3
-(page-merge-stk) sort chunk 4
 child-qsort: exit(72)
+(page-merge-stk) sort chunk 4
 child-qsort: exit(72)
 (page-merge-stk) sort chunk 5
 child-qsort: exit(72)
@@ -48,8 +48,8 @@ child-qsort: exit(72)
 (page-merge-stk) end
 page-merge-stk: exit(0)
 Execution of 'page-merge-stk' complete.
-Timer: 502 ticks
-Thread: 0 idle ticks, 74 kernel ticks, 428 user ticks
+Timer: 753 ticks
+Thread: 0 idle ticks, 75 kernel ticks, 679 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 4861 reads, 6506 writes
 hd1:0: 160 reads, 0 writes

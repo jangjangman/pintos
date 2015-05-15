@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-misalign into /tmp/46uj28ivqT.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/46uj28ivqT.dsk...
-Writing command line to /tmp/azdx5MdJLJ.dsk...
-qemu -hda /tmp/azdx5MdJLJ.dsk -hdb /tmp/ThRf2NPiJz.dsk -hdc /tmp/46uj28ivqT.dsk -hdd /tmp/ouBT0q6PBn.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-misalign into /tmp/nBZ4U4on3x.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/nBZ4U4on3x.dsk...
+Writing command line to /tmp/Q6su3Z2tEJ.dsk...
+qemu -hda /tmp/Q6su3Z2tEJ.dsk -hdb /tmp/OfjIlLKqyv.dsk -hdc /tmp/nBZ4U4on3x.dsk -hdd /tmp/PKFQpQdK4h.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-misalign put sample.txt run mmap-misalign
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -19,8 +19,8 @@ Executing 'mmap-misalign':
 (mmap-misalign) begin
 (mmap-misalign) open "sample.txt"
 (mmap-misalign) try to mmap at misaligned address
-(mmap-misalign) try to mmap at misaligned address: FAILED
-mmap-misalign: exit(1)
+(mmap-misalign) end
+mmap-misalign: exit(0)
 Execution of 'mmap-misalign' complete.
 Timer: 65 ticks
 Thread: 0 idle ticks, 64 kernel ticks, 1 user ticks
@@ -28,7 +28,7 @@ hd0:0: 0 reads, 0 writes
 hd0:1: 93 reads, 162 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1115 characters output
+Console: 1077 characters output
 Keyboard: 0 keys pressed
 Exception: 4 page faults
 Powering off...

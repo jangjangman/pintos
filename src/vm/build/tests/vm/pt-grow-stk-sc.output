@@ -1,6 +1,6 @@
-Copying tests/vm/pt-grow-stk-sc into /tmp/rAVLqHksVM.dsk...
-Writing command line to /tmp/wmyBbIoS0x.dsk...
-qemu -hda /tmp/wmyBbIoS0x.dsk -hdb /tmp/NB90TlPaLm.dsk -hdc /tmp/rAVLqHksVM.dsk -hdd /tmp/4iyR7mcx70.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-grow-stk-sc into /tmp/hFJGmto2Ei.dsk...
+Writing command line to /tmp/0LHmFdkFfs.dsk...
+qemu -hda /tmp/0LHmFdkFfs.dsk -hdb /tmp/NYu4ywhq5I.dsk -hdc /tmp/hFJGmto2Ei.dsk -hdd /tmp/agxM1KfKWs.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-grow-stk-sc run pt-grow-stk-sc
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -24,8 +24,8 @@ Executing 'pt-grow-stk-sc':
 (pt-grow-stk-sc) end
 pt-grow-stk-sc: exit(0)
 Execution of 'pt-grow-stk-sc' complete.
-Timer: 66 ticks
-Thread: 0 idle ticks, 64 kernel ticks, 2 user ticks
+Timer: 65 ticks
+Thread: 0 idle ticks, 63 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 103 reads, 168 writes
 hd1:0: 76 reads, 0 writes
