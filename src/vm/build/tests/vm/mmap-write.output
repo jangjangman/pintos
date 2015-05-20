@@ -1,11 +1,11 @@
-Copying tests/vm/mmap-write into /tmp/jgNexG1eOj.dsk...
-Writing command line to /tmp/Se3cL9f6EZ.dsk...
-qemu -hda /tmp/Se3cL9f6EZ.dsk -hdb /tmp/hMbNCSZrHU.dsk -hdc /tmp/jgNexG1eOj.dsk -hdd /tmp/Pgxd2qcejL.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-write into /tmp/w5KNwhSM41.dsk...
+Writing command line to /tmp/FEnWlqKoug.dsk...
+qemu -hda /tmp/FEnWlqKoug.dsk -hdb /tmp/CVYmOUREE7.dsk -hdc /tmp/w5KNwhSM41.dsk -hdd /tmp/PRjwp2vkxu.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-write run mmap-write
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
 373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
+Calibrating timer...  58,880,000 loops/s.
 hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -22,8 +22,8 @@ Executing 'mmap-write':
 (mmap-write) end
 mmap-write: exit(0)
 Execution of 'mmap-write' complete.
-Timer: 65 ticks
-Thread: 0 idle ticks, 63 kernel ticks, 2 user ticks
+Timer: 68 ticks
+Thread: 0 idle ticks, 66 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 101 reads, 168 writes
 hd1:0: 76 reads, 0 writes

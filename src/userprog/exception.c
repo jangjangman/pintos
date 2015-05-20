@@ -216,44 +216,6 @@ page_fault (struct intr_frame *f)
 	  return;
   }
 
-  /*
-  if (not_present && spte->lazy == true)
-  {
-//	  printf ("lazy load!\n");
-	  // Lazy Load 
-	  lock_acquire (&frame_lock);
-
-	  // Get a page of memory 
-	  uint8_t *kpage = palloc_get_page (PAL_USER);
-
-	  if (spte->zero)
-		  memset (kpage, 0, PGSIZE);
-
-	  else
-	  {
-		  off_t pos = file_tell (spte->file);
-
-		  // Load this page from disk by offset 
-		  if (file_read_at (spte->file, kpage, PGSIZE, spte->offset) != PGSIZE)
-		  {
-			  file_seek (spte->file, pos);
-			  palloc_free_page (kpage);
-			  lock_release (&frame_lock);
-			  return false;
-		  }
-		  file_seek (spte->file, pos);
-	  }
-
-	  pagedir_set_page (t->pagedir, spte->upage, kpage, spte->writable);
-	  frame_insert (spte->upage, (unsigned)kpage-0xc0000000, t);
-	  //printf ("%x %x\n", spte->upage, kpage);
-
-	  spte->lazy = false;
-	  spte->kpage = kpage;
-	  lock_release (&frame_lock);
-	  return;
-  }
-*/
   else if (not_present)
   {
 	  lock_acquire (&frame_lock);

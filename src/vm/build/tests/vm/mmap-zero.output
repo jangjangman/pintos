@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-zero into /tmp/gDr3tXIGQN.dsk...
-Writing command line to /tmp/ANmijgaZEz.dsk...
-qemu -hda /tmp/ANmijgaZEz.dsk -hdb /tmp/i7ptu8JX3t.dsk -hdc /tmp/gDr3tXIGQN.dsk -hdd /tmp/bn9OJKvgKd.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-zero into /tmp/DUD5XMwD7m.dsk...
+Writing command line to /tmp/JcrEVmpvbY.dsk...
+qemu -hda /tmp/JcrEVmpvbY.dsk -hdb /tmp/PYYsFQdLtg.dsk -hdc /tmp/DUD5XMwD7m.dsk -hdd /tmp/72GtrILb2B.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-zero run mmap-zero
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -20,8 +20,8 @@ Executing 'mmap-zero':
 (mmap-zero) mmap "empty"
 mmap-zero: exit(-1)
 Execution of 'mmap-zero' complete.
-Timer: 64 ticks
-Thread: 0 idle ticks, 63 kernel ticks, 1 user ticks
+Timer: 65 ticks
+Thread: 0 idle ticks, 64 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 88 reads, 158 writes
 hd1:0: 73 reads, 0 writes

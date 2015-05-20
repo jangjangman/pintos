@@ -477,11 +477,13 @@ syscall_mmap (struct intr_frame *f)
 		return;
 	}
 
+	
 	if (spt_find_upage (addr, curr)) {
 		f->eax = -1;
 		lock_release (&syscall_lock);
 		return;
 	}
+	
 
 	struct mmap_info *mip = malloc (sizeof (struct mmap_info));
 	mip->mapid = curr->cur_mapid++;
@@ -516,7 +518,7 @@ syscall_munmap (int mapid)
 
 	mip = find_by_mapid (mapid);
 	fsize = file_length (mip->f);
-	offs = file_tell(mip->f);
+	//offs = file_tell(mip->f);
 
 	for (dst = mip->addr; (unsigned) (dst - mip->addr) < fsize; dst += PGSIZE) {
 		spte = spt_find_upage (dst, curr);
@@ -525,13 +527,11 @@ syscall_munmap (int mapid)
 			continue;
 
 		if (pagedir_get_page (curr->pagedir, dst) && pagedir_is_dirty(curr->pagedir, dst)) {
-			file_seek (spte->file, spte->offset);
 			file_write (spte->file, dst, spte->read_bytes);
 		}	
 		spt_remove (dst, curr);
 	}
 
-	file_seek (mip->f, offs);
 	mip->mapid = -1;
 }
 
