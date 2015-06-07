@@ -108,6 +108,7 @@ struct thread
 
 	int cur_fd;
 	struct list files;
+	bool fd_alloc[128];
 	struct file *exec;
 	
     unsigned magic;                     /* Detects stack overflow. */
@@ -120,6 +121,8 @@ struct thread
 	int cur_mapid;
 
 	uint8_t *stack_limit;
+
+	uint32_t cur_dir;
   };
 
 struct user_file

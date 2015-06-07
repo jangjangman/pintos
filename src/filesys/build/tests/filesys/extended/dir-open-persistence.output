@@ -1,0 +1,29 @@
+Writing command line to /tmp/2ZDfz5A1lZ.dsk...
+qemu -hda /tmp/2ZDfz5A1lZ.dsk -hdb tmp.dsk -hdc /tmp/EMfTtB0mwz.dsk -hdd /tmp/LnvFX80edb.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Boot complete.
+Executing 'tar fs.tar /':
+Kernel PANIC at ../../devices/disk.c:436 in select_sector(): assertion `sec_no < d->capacity' failed.
+Call stack: 0xc0107366 0xc0104dde 0xc01047d3 0xc010d87c 0xc010ce1f 0xc010c3fc 0xc010b223 0xc010af3d 0xc0101825 0xc01019fb 0x804a829 0x804825e 0x80484c5 0x80482d7 0x80484c5 0x80482d7 0x80481c4 0x80480db 0x8048eb8.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 78 ticks
+Thread: 0 idle ticks, 51 kernel ticks, 27 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 561 reads, 466 writes
+hd1:0: 0 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1215 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...
+Copying tests/filesys/extended/dir-open.tar out of /tmp/EMfTtB0mwz.dsk...

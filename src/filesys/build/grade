@@ -1,0 +1,1188 @@
+TOTAL TESTING SCORE: 90.7%
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+SUMMARY BY TEST SET
+
+Test Set                                      Pts Max  % Ttl  % Max
+--------------------------------------------- --- --- ------ ------
+tests/filesys/extended/Rubric.functionality    21/ 34  18.5%/ 30.0%
+tests/filesys/extended/Rubric.robustness        9/ 10  13.5%/ 15.0%
+tests/filesys/extended/Rubric.persistence      16/ 23  13.9%/ 20.0%
+tests/filesys/base/Rubric                      30/ 30  20.0%/ 20.0%
+tests/userprog/Rubric.functionality           108/108  10.0%/ 10.0%
+tests/userprog/Rubric.robustness               88/ 88   5.0%/  5.0%
+tests/vm/Rubric.functionality                  55/ 55   8.0%/  8.0%
+tests/vm/Rubric.robustness                     25/ 28   1.8%/  2.0%
+--------------------------------------------- --- --- ------ ------
+Total                                                  90.7%/110.0%
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+SUMMARY OF INDIVIDUAL TESTS
+
+Functionality of extended file system (tests/filesys/extended/Rubric.functionality):
+	- Test directory support.
+	  ** 0/ 1 tests/filesys/extended/dir-mkdir
+	  ** 0/ 3 tests/filesys/extended/dir-mk-tree
+
+	     1/ 1 tests/filesys/extended/dir-rmdir
+	  ** 0/ 3 tests/filesys/extended/dir-rm-tree
+
+	  ** 0/ 5 tests/filesys/extended/dir-vine
+
+	- Test file growth.
+	     1/ 1 tests/filesys/extended/grow-create
+	     1/ 1 tests/filesys/extended/grow-seq-sm
+	     3/ 3 tests/filesys/extended/grow-seq-lg
+	     3/ 3 tests/filesys/extended/grow-sparse
+	     3/ 3 tests/filesys/extended/grow-two-files
+	     1/ 1 tests/filesys/extended/grow-tell
+	     1/ 1 tests/filesys/extended/grow-file-size
+
+	- Test directory growth.
+	  ** 0/ 1 tests/filesys/extended/grow-dir-lg
+	     1/ 1 tests/filesys/extended/grow-root-sm
+	     1/ 1 tests/filesys/extended/grow-root-lg
+
+	- Test writing from multiple processes.
+	     5/ 5 tests/filesys/extended/syn-rw
+
+	- Section summary.
+	     11/ 16 tests passed
+	     21/ 34 points subtotal
+
+Robustness of file system (tests/filesys/extended/Rubric.robustness):
+	     1/ 1 tests/filesys/extended/dir-empty-name
+	  ** 0/ 1 tests/filesys/extended/dir-open
+	     1/ 1 tests/filesys/extended/dir-over-file
+	     1/ 1 tests/filesys/extended/dir-under-file
+
+	     3/ 3 tests/filesys/extended/dir-rm-cwd
+	     2/ 2 tests/filesys/extended/dir-rm-parent
+	     1/ 1 tests/filesys/extended/dir-rm-root
+
+	- Section summary.
+	      6/  7 tests passed
+	      9/ 10 points subtotal
+
+Persistence of file system (tests/filesys/extended/Rubric.persistence):
+	     1/ 1 tests/filesys/extended/dir-empty-name-persistence
+	  ** 0/ 1 tests/filesys/extended/dir-mk-tree-persistence
+	  ** 0/ 1 tests/filesys/extended/dir-mkdir-persistence
+	  ** 0/ 1 tests/filesys/extended/dir-open-persistence
+	     1/ 1 tests/filesys/extended/dir-over-file-persistence
+	     1/ 1 tests/filesys/extended/dir-rm-cwd-persistence
+	     1/ 1 tests/filesys/extended/dir-rm-parent-persistence
+	  ** 0/ 1 tests/filesys/extended/dir-rm-root-persistence
+	  ** 0/ 1 tests/filesys/extended/dir-rm-tree-persistence
+	     1/ 1 tests/filesys/extended/dir-rmdir-persistence
+	     1/ 1 tests/filesys/extended/dir-under-file-persistence
+	  ** 0/ 1 tests/filesys/extended/dir-vine-persistence
+	     1/ 1 tests/filesys/extended/grow-create-persistence
+	  ** 0/ 1 tests/filesys/extended/grow-dir-lg-persistence
+	     1/ 1 tests/filesys/extended/grow-file-size-persistence
+	     1/ 1 tests/filesys/extended/grow-root-lg-persistence
+	     1/ 1 tests/filesys/extended/grow-root-sm-persistence
+	     1/ 1 tests/filesys/extended/grow-seq-lg-persistence
+	     1/ 1 tests/filesys/extended/grow-seq-sm-persistence
+	     1/ 1 tests/filesys/extended/grow-sparse-persistence
+	     1/ 1 tests/filesys/extended/grow-tell-persistence
+	     1/ 1 tests/filesys/extended/grow-two-files-persistence
+	     1/ 1 tests/filesys/extended/syn-rw-persistence
+
+	- Section summary.
+	     16/ 23 tests passed
+	     16/ 23 points subtotal
+
+Functionality of base file system (tests/filesys/base/Rubric):
+	- Test basic support for small files.
+	     1/ 1 tests/filesys/base/sm-create
+	     2/ 2 tests/filesys/base/sm-full
+	     2/ 2 tests/filesys/base/sm-random
+	     2/ 2 tests/filesys/base/sm-seq-block
+	     3/ 3 tests/filesys/base/sm-seq-random
+
+	- Test basic support for large files.
+	     1/ 1 tests/filesys/base/lg-create
+	     2/ 2 tests/filesys/base/lg-full
+	     2/ 2 tests/filesys/base/lg-random
+	     2/ 2 tests/filesys/base/lg-seq-block
+	     3/ 3 tests/filesys/base/lg-seq-random
+
+	- Test synchronized multiprogram access to files.
+	     4/ 4 tests/filesys/base/syn-read
+	     4/ 4 tests/filesys/base/syn-write
+	     2/ 2 tests/filesys/base/syn-remove
+
+	- Section summary.
+	     13/ 13 tests passed
+	     30/ 30 points subtotal
+
+Functionality of system calls (tests/userprog/Rubric.functionality):
+	- Test argument passing on Pintos command line.
+	     3/ 3 tests/userprog/args-none
+	     3/ 3 tests/userprog/args-single
+	     3/ 3 tests/userprog/args-multiple
+	     3/ 3 tests/userprog/args-many
+	     3/ 3 tests/userprog/args-dbl-space
+
+	- Test "create" system call.
+	     3/ 3 tests/userprog/create-empty
+	     3/ 3 tests/userprog/create-long
+	     3/ 3 tests/userprog/create-normal
+	     3/ 3 tests/userprog/create-exists
+
+	- Test "open" system call.
+	     3/ 3 tests/userprog/open-missing
+	     3/ 3 tests/userprog/open-normal
+	     3/ 3 tests/userprog/open-twice
+
+	- Test "read" system call.
+	     3/ 3 tests/userprog/read-normal
+	     3/ 3 tests/userprog/read-zero
+
+	- Test "write" system call.
+	     3/ 3 tests/userprog/write-normal
+	     3/ 3 tests/userprog/write-zero
+
+	- Test "close" system call.
+	     3/ 3 tests/userprog/close-normal
+
+	- Test "exec" system call.
+	     5/ 5 tests/userprog/exec-once
+	     5/ 5 tests/userprog/exec-multiple
+	     5/ 5 tests/userprog/exec-arg
+
+	- Test "wait" system call.
+	     5/ 5 tests/userprog/wait-simple
+	     5/ 5 tests/userprog/wait-twice
+
+	- Test "exit" system call.
+	     5/ 5 tests/userprog/exit
+
+	- Test "halt" system call.
+	     3/ 3 tests/userprog/halt
+
+	- Test recursive execution of user programs.
+	    15/15 tests/userprog/multi-recurse
+
+	- Test read-only executable feature.
+	     3/ 3 tests/userprog/rox-simple
+	     3/ 3 tests/userprog/rox-child
+	     3/ 3 tests/userprog/rox-multichild
+
+	- Section summary.
+	     28/ 28 tests passed
+	    108/108 points subtotal
+
+Robustness of system calls (tests/userprog/Rubric.robustness):
+	- Test robustness of file descriptor handling.
+	     2/ 2 tests/userprog/close-stdin
+	     2/ 2 tests/userprog/close-stdout
+	     2/ 2 tests/userprog/close-bad-fd
+	     2/ 2 tests/userprog/close-twice
+	     2/ 2 tests/userprog/read-bad-fd
+	     2/ 2 tests/userprog/read-stdout
+	     2/ 2 tests/userprog/write-bad-fd
+	     2/ 2 tests/userprog/write-stdin
+	     2/ 2 tests/userprog/multi-child-fd
+
+	- Test robustness of pointer handling.
+	     3/ 3 tests/userprog/create-bad-ptr
+	     3/ 3 tests/userprog/exec-bad-ptr
+	     3/ 3 tests/userprog/open-bad-ptr
+	     3/ 3 tests/userprog/read-bad-ptr
+	     3/ 3 tests/userprog/write-bad-ptr
+
+	- Test robustness of buffer copying across page boundaries.
+	     3/ 3 tests/userprog/create-bound
+	     3/ 3 tests/userprog/open-boundary
+	     3/ 3 tests/userprog/read-boundary
+	     3/ 3 tests/userprog/write-boundary
+
+	- Test handling of null pointer and empty strings.
+	     2/ 2 tests/userprog/create-null
+	     2/ 2 tests/userprog/open-null
+	     2/ 2 tests/userprog/open-empty
+
+	- Test robustness of system call implementation.
+	     3/ 3 tests/userprog/sc-bad-arg
+	     3/ 3 tests/userprog/sc-bad-sp
+	     5/ 5 tests/userprog/sc-boundary
+	     5/ 5 tests/userprog/sc-boundary-2
+
+	- Test robustness of "exec" and "wait" system calls.
+	     5/ 5 tests/userprog/exec-missing
+	     5/ 5 tests/userprog/wait-bad-pid
+	     5/ 5 tests/userprog/wait-killed
+
+	- Test robustness of exception handling.
+	     1/ 1 tests/userprog/bad-read
+	     1/ 1 tests/userprog/bad-write
+	     1/ 1 tests/userprog/bad-jump
+	     1/ 1 tests/userprog/bad-read2
+	     1/ 1 tests/userprog/bad-write2
+	     1/ 1 tests/userprog/bad-jump2
+
+	- Section summary.
+	     34/ 34 tests passed
+	     88/ 88 points subtotal
+
+Functionality of virtual memory subsystem (tests/vm/Rubric.functionality):
+	- Test stack growth.
+	     3/ 3 tests/vm/pt-grow-stack
+	     3/ 3 tests/vm/pt-grow-stk-sc
+	     3/ 3 tests/vm/pt-big-stk-obj
+	     3/ 3 tests/vm/pt-grow-pusha
+
+	- Test paging behavior.
+	     3/ 3 tests/vm/page-linear
+	     3/ 3 tests/vm/page-parallel
+	     3/ 3 tests/vm/page-shuffle
+	     4/ 4 tests/vm/page-merge-seq
+	     4/ 4 tests/vm/page-merge-par
+	     4/ 4 tests/vm/page-merge-mm
+	     4/ 4 tests/vm/page-merge-stk
+
+	- Test "mmap" system call.
+	     2/ 2 tests/vm/mmap-read
+	     2/ 2 tests/vm/mmap-write
+	     2/ 2 tests/vm/mmap-shuffle
+
+	     2/ 2 tests/vm/mmap-twice
+
+	     2/ 2 tests/vm/mmap-unmap
+	     1/ 1 tests/vm/mmap-exit
+
+	     3/ 3 tests/vm/mmap-clean
+
+	     2/ 2 tests/vm/mmap-close
+	     2/ 2 tests/vm/mmap-remove
+
+	- Section summary.
+	     20/ 20 tests passed
+	     55/ 55 points subtotal
+
+Robustness of virtual memory subsystem (tests/vm/Rubric.robustness):
+	- Test robustness of page table support.
+	     2/ 2 tests/vm/pt-bad-addr
+	     3/ 3 tests/vm/pt-bad-read
+	     2/ 2 tests/vm/pt-write-code
+	  ** 0/ 3 tests/vm/pt-write-code2
+	     4/ 4 tests/vm/pt-grow-bad
+
+	- Test robustness of "mmap" system call.
+	     1/ 1 tests/vm/mmap-bad-fd
+	     1/ 1 tests/vm/mmap-inherit
+	     1/ 1 tests/vm/mmap-null
+	     1/ 1 tests/vm/mmap-zero
+
+	     2/ 2 tests/vm/mmap-misalign
+
+	     2/ 2 tests/vm/mmap-over-code
+	     2/ 2 tests/vm/mmap-over-data
+	     2/ 2 tests/vm/mmap-over-stk
+	     2/ 2 tests/vm/mmap-overlap
+
+
+	- Section summary.
+	     13/ 14 tests passed
+	     25/ 28 points subtotal
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/extended/dir-mkdir FAILURE:
+
+run: open "b": FAILED
+
+OUTPUT FROM tests/filesys/extended/dir-mkdir:
+
+Copying tests/filesys/extended/dir-mkdir into /tmp/0bLtmZ861K.dsk...
+Copying tests/filesys/extended/tar into /tmp/0bLtmZ861K.dsk...
+Writing command line to /tmp/Ve7MRbt4hA.dsk...
+qemu -hda /tmp/Ve7MRbt4hA.dsk -hdb tmp.dsk -hdc /tmp/0bLtmZ861K.dsk -hdd /tmp/EY2LSa4KBG.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put dir-mkdir put tar run dir-mkdir
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 159 sector (79 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'dir-mkdir' into the file system...
+Putting 'tar' into the file system...
+Executing 'dir-mkdir':
+(dir-mkdir) begin
+(dir-mkdir) mkdir "a"
+(dir-mkdir) create "a/b"
+(dir-mkdir) chdir "a"
+(dir-mkdir) open "b"
+(dir-mkdir) open "b": FAILED
+dir-mkdir: exit(1)
+Execution of 'dir-mkdir' complete.
+Timer: 80 ticks
+Thread: 0 idle ticks, 79 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 198 reads, 330 writes
+hd1:0: 159 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1053 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/extended/dir-mk-tree FAILURE:
+
+run: open "/0/2/0/3": FAILED
+
+OUTPUT FROM tests/filesys/extended/dir-mk-tree:
+
+Copying tests/filesys/extended/dir-mk-tree into /tmp/OqNPy1utCp.dsk...
+Copying tests/filesys/extended/tar into /tmp/OqNPy1utCp.dsk...
+Writing command line to /tmp/QA6XqkDtvw.dsk...
+qemu -hda /tmp/QA6XqkDtvw.dsk -hdb tmp.dsk -hdc /tmp/OqNPy1utCp.dsk -hdd /tmp/gTAi1hseOu.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put dir-mk-tree put tar run dir-mk-tree
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 162 sector (81 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'dir-mk-tree' into the file system...
+Putting 'tar' into the file system...
+Executing 'dir-mk-tree':
+(dir-mk-tree) begin
+(dir-mk-tree) creating /0/0/0/0 through /3/2/2/3...
+(dir-mk-tree) open "/0/2/0/3"
+(dir-mk-tree) open "/0/2/0/3": FAILED
+dir-mk-tree: exit(1)
+Execution of 'dir-mk-tree' complete.
+Timer: 107 ticks
+Thread: 0 idle ticks, 71 kernel ticks, 36 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 1337 reads, 873 writes
+hd1:0: 162 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1071 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/extended/dir-rm-tree FAILURE:
+
+run: open "/0/2/0/3": FAILED
+
+OUTPUT FROM tests/filesys/extended/dir-rm-tree:
+
+Copying tests/filesys/extended/dir-rm-tree into /tmp/KBi9DDaMv7.dsk...
+Copying tests/filesys/extended/tar into /tmp/KBi9DDaMv7.dsk...
+Writing command line to /tmp/K8kOt8KVb3.dsk...
+qemu -hda /tmp/K8kOt8KVb3.dsk -hdb tmp.dsk -hdc /tmp/KBi9DDaMv7.dsk -hdd /tmp/AlRw4GnFRg.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put dir-rm-tree put tar run dir-rm-tree
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 165 sector (82 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'dir-rm-tree' into the file system...
+Putting 'tar' into the file system...
+Executing 'dir-rm-tree':
+(dir-rm-tree) begin
+(dir-rm-tree) creating /0/0/0/0 through /3/2/2/3...
+(dir-rm-tree) open "/0/2/0/3"
+(dir-rm-tree) open "/0/2/0/3": FAILED
+dir-rm-tree: exit(1)
+Execution of 'dir-rm-tree' complete.
+Timer: 138 ticks
+Thread: 0 idle ticks, 86 kernel ticks, 52 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 1340 reads, 879 writes
+hd1:0: 165 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1071 characters output
+Keyboard: 0 keys pressed
+Exception: 4 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/extended/dir-vine FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (dir-vine) begin
+  (dir-vine) creating many levels of files and directories...
+  (dir-vine) removing all but top 10 levels of files and directories...
+  (dir-vine) end
+Differences in `diff -u' format:
+  (dir-vine) begin
+  (dir-vine) creating many levels of files and directories...
+- (dir-vine) removing all but top 10 levels of files and directories...
+- (dir-vine) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/filesys/extended/dir-vine:
+
+Copying tests/filesys/extended/dir-vine into /tmp/jXAak9MZzU.dsk...
+Copying tests/filesys/extended/tar into /tmp/jXAak9MZzU.dsk...
+Writing command line to /tmp/0WQLGaLe2Z.dsk...
+qemu -hda /tmp/0WQLGaLe2Z.dsk -hdb tmp.dsk -hdc /tmp/jXAak9MZzU.dsk -hdd /tmp/XzuoArPjl1.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put dir-vine put tar run dir-vine
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 163 sector (81 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'dir-vine' into the file system...
+Putting 'tar' into the file system...
+Executing 'dir-vine':
+(dir-vine) begin
+(dir-vine) creating many levels of files and directories...
+dir-vine: exit(-1)
+Execution of 'dir-vine' complete.
+Timer: 185 ticks
+Thread: 0 idle ticks, 93 kernel ticks, 92 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 1216 reads, 968 writes
+hd1:0: 163 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 991 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/extended/grow-dir-lg FAILURE:
+
+run: open "/x/file0": FAILED
+
+OUTPUT FROM tests/filesys/extended/grow-dir-lg:
+
+Copying tests/filesys/extended/grow-dir-lg into /tmp/31mVVg3SrX.dsk...
+Copying tests/filesys/extended/tar into /tmp/31mVVg3SrX.dsk...
+Writing command line to /tmp/L32kPDxJiB.dsk...
+qemu -hda /tmp/L32kPDxJiB.dsk -hdb tmp.dsk -hdc /tmp/31mVVg3SrX.dsk -hdd /tmp/vyuVpTTxZt.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put grow-dir-lg put tar run grow-dir-lg
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 160 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'grow-dir-lg' into the file system...
+Putting 'tar' into the file system...
+Executing 'grow-dir-lg':
+(grow-dir-lg) begin
+(grow-dir-lg) mkdir /x
+(grow-dir-lg) creating and checking "/x/file0"
+(grow-dir-lg) open "/x/file0": FAILED
+grow-dir-lg: exit(1)
+Execution of 'grow-dir-lg' complete.
+Timer: 78 ticks
+Thread: 0 idle ticks, 77 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 198 reads, 332 writes
+hd1:0: 160 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1056 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/extended/dir-open FAILURE:
+
+run: write "xyzzy" (must return -1, actually 6): FAILED
+
+OUTPUT FROM tests/filesys/extended/dir-open:
+
+Copying tests/filesys/extended/dir-open into /tmp/4Z0HItRomS.dsk...
+Copying tests/filesys/extended/tar into /tmp/4Z0HItRomS.dsk...
+Writing command line to /tmp/hVmyyIVJxC.dsk...
+qemu -hda /tmp/hVmyyIVJxC.dsk -hdb tmp.dsk -hdc /tmp/4Z0HItRomS.dsk -hdd /tmp/wT0GIInRQD.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put dir-open put tar run dir-open
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 159 sector (79 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'dir-open' into the file system...
+Putting 'tar' into the file system...
+Executing 'dir-open':
+(dir-open) begin
+(dir-open) mkdir "xyzzy"
+(dir-open) open "xyzzy"
+(dir-open) write "xyzzy"
+(dir-open) write "xyzzy" (must return -1, actually 6)
+(dir-open) write "xyzzy" (must return -1, actually 6): FAILED
+dir-open: exit(1)
+Execution of 'dir-open' complete.
+Timer: 76 ticks
+Thread: 0 idle ticks, 74 kernel ticks, 2 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 195 reads, 328 writes
+hd1:0: 159 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1117 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/extended/dir-mk-tree-persistence FAILURE:
+
+Prerequisite test tests/filesys/extended/dir-mk-tree failed.
+
+OUTPUT FROM tests/filesys/extended/dir-mk-tree-persistence:
+
+Writing command line to /tmp/G8zPq2Brzw.dsk...
+qemu -hda /tmp/G8zPq2Brzw.dsk -hdb tmp.dsk -hdc /tmp/zE3YRWsV2U.dsk -hdd /tmp/SCi91BN6dK.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Boot complete.
+Executing 'tar fs.tar /':
+//0/0/0//0/0/0/0: open failed
+//0/0/0//0/0/0/1: open failed
+//0/0/0//0/0/0/2: open failed
+//0/0/0//0/0/0/3: open failed
+//0/0/1//0/0/1/0: open failed
+//0/0/1//0/0/1/1: open failed
+//0/0/1//0/0/1/2: open failed
+//0/0/1//0/0/1/3: open failed
+//0/0/2//0/0/2/0: open failed
+//0/0/2//0/0/2/1: open failed
+//0/0/2//0/0/2/2: open failed
+//0/0/2//0/0/2/3: open failed
+//0/1/0//0/1/0/0: open failed
+//0/1/0//0/1/0/1: open failed
+//0/1/0//0/1/0/2: open failed
+//0/1/0//0/1/0/3: open failed
+//0/1/1//0/1/1/0: open failed
+//0/1/1//0/1/1/1: open failed
+//0/1/1//0/1/1/2: open failed
+//0/1/1//0/1/1/3: open failed
+//0/1/2//0/1/2/0: open failed
+//0/1/2//0/1/2/1: open failed
+//0/1/2//0/1/2/2: open failed
+//0/1/2//0/1/2/3: open failed
+//0/2/0//0/2/0/0: open failed
+//0/2/0//0/2/0/1: open failed
+//0/2/0//0/2/0/2: open failed
+//0/2/0//0/2/0/3: open failed
+//0/2/1//0/2/1/0: open failed
+//0/2/1//0/2/1/1: open failed
+//0/2/1//0/2/1/2: open failed
+//0/2/1//0/2/1/3: open failed
+//0/2/2//0/2/2/0: open failed
+//0/2/2//0/2/2/1: open failed
+//0/2/2//0/2/2/2: open failed
+//0/2/2//0/2/2/3: open failed
+//1/0/0//1/0/0/0: open failed
+//1/0/0//1/0/0/1: open failed
+//1/0/0//1/0/0/2: open failed
+//1/0/0//1/0/0/3: open failed
+//1/0/1//1/0/1/0: open failed
+//1/0/1//1/0/1/1: open failed
+//1/0/1//1/0/1/2: open failed
+//1/0/1//1/0/1/3: open failed
+//1/0/2//1/0/2/0: open failed
+//1/0/2//1/0/2/1: open failed
+//1/0/2//1/0/2/2: open failed
+//1/0/2//1/0/2/3: open failed
+//1/1/0//1/1/0/0: open failed
+//1/1/0//1/1/0/1: open failed
+//1/1/0//1/1/0/2: open failed
+//1/1/0//1/1/0/3: open failed
+//1/1/1//1/1/1/0: open failed
+//1/1/1//1/1/1/1: open failed
+//1/1/1//1/1/1/2: open failed
+//1/1/1//1/1/1/3: open failed
+//1/1/2//1/1/2/0: open failed
+//1/1/2//1/1/2/1: open failed
+//1/1/2//1/1/2/2: open failed
+//1/1/2//1/1/2/3: open failed
+//1/2/0//1/2/0/0: open failed
+//1/2/0//1/2/0/1: open failed
+//1/2/0//1/2/0/2: open failed
+//1/2/0//1/2/0/3: open failed
+//1/2/1//1/2/1/0: open failed
+//1/2/1//1/2/1/1: open failed
+//1/2/1//1/2/1/2: open failed
+//1/2/1//1/2/1/3: open failed
+//1/2/2//1/2/2/0: open failed
+//1/2/2//1/2/2/1: open failed
+//1/2/2//1/2/2/2: open failed
+//1/2/2//1/2/2/3: open failed
+//2/0/0//2/0/0/0: open failed
+//2/0/0//2/0/0/1: open failed
+//2/0/0//2/0/0/2: open failed
+//2/0/0//2/0/0/3: open failed
+//2/0/1//2/0/1/0: open failed
+//2/0/1//2/0/1/1: open failed
+//2/0/1//2/0/1/2: open failed
+//2/0/1//2/0/1/3: open failed
+//2/0/2//2/0/2/0: open failed
+//2/0/2//2/0/2/1: open failed
+//2/0/2//2/0/2/2: open failed
+//2/0/2//2/0/2/3: open failed
+//2/1/0//2/1/0/0: open failed
+//2/1/0//2/1/0/1: open failed
+//2/1/0//2/1/0/2: open failed
+//2/1/0//2/1/0/3: open failed
+//2/1/1//2/1/1/0: open failed
+//2/1/1//2/1/1/1: open failed
+//2/1/1//2/1/1/2: open failed
+//2/1/1//2/1/1/3: open failed
+//2/1/2//2/1/2/0: open failed
+//2/1/2//2/1/2/1: open failed
+//2/1/2//2/1/2/2: open failed
+//2/1/2//2/1/2/3: open failed
+//2/2/0//2/2/0/0: open failed
+//2/2/0//2/2/0/1: open failed
+//2/2/0//2/2/0/2: open failed
+//2/2/0//2/2/0/3: open failed
+//2/2/1//2/2/1/0: open failed
+//2/2/1//2/2/1/1: open failed
+//2/2/1//2/2/1/2: open failed
+//2/2/1//2/2/1/3: open failed
+//2/2/2//2/2/2/0: open failed
+//2/2/2//2/2/2/1: open failed
+//2/2/2//2/2/2/2: open failed
+//2/2/2//2/2/2/3: open failed
+//3/0/0//3/0/0/0: open failed
+//3/0/0//3/0/0/1: open failed
+//3/0/0//3/0/0/2: open failed
+//3/0/0//3/0/0/3: open failed
+//3/0/1//3/0/1/0: open failed
+//3/0/1//3/0/1/1: open failed
+//3/0/1//3/0/1/2: open failed
+//3/0/1//3/0/1/3: open failed
+//3/0/2//3/0/2/0: open failed
+//3/0/2//3/0/2/1: open failed
+//3/0/2//3/0/2/2: open failed
+//3/0/2//3/0/2/3: open failed
+//3/1/0//3/1/0/0: open failed
+//3/1/0//3/1/0/1: open failed
+//3/1/0//3/1/0/2: open failed
+//3/1/0//3/1/0/3: open failed
+//3/1/1//3/1/1/0: open failed
+//3/1/1//3/1/1/1: open failed
+//3/1/1//3/1/1/2: open failed
+//3/1/1//3/1/1/3: open failed
+//3/1/2//3/1/2/0: open failed
+//3/1/2//3/1/2/1: open failed
+//3/1/2//3/1/2/2: open failed
+//3/1/2//3/1/2/3: open failed
+//3/2/0//3/2/0/0: open failed
+//3/2/0//3/2/0/1: open failed
+//3/2/0//3/2/0/2: open failed
+//3/2/0//3/2/0/3: open failed
+//3/2/1//3/2/1/0: open failed
+//3/2/1//3/2/1/1: open failed
+//3/2/1//3/2/1/2: open failed
+//3/2/1//3/2/1/3: open failed
+//3/2/2//3/2/2/0: open failed
+//3/2/2//3/2/2/1: open failed
+//3/2/2//3/2/2/2: open failed
+//3/2/2//3/2/2/3: open failed
+tar: exit(1)
+Execution of 'tar fs.tar /' complete.
+Getting 'fs.tar' from the file system...
+Timer: 115 ticks
+Thread: 0 idle ticks, 62 kernel ticks, 53 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 1811 reads, 779 writes
+hd1:0: 0 reads, 217 writes
+hd1:1: 0 reads, 0 writes
+Console: 5162 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...
+Copying tests/filesys/extended/dir-mk-tree.tar out of /tmp/zE3YRWsV2U.dsk...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/extended/dir-mkdir-persistence FAILURE:
+
+Prerequisite test tests/filesys/extended/dir-mkdir failed.
+
+OUTPUT FROM tests/filesys/extended/dir-mkdir-persistence:
+
+Writing command line to /tmp/qLEC0yyg54.dsk...
+qemu -hda /tmp/qLEC0yyg54.dsk -hdb tmp.dsk -hdc /tmp/FEytecIAdJ.dsk -hdd /tmp/JWwqMJIYLP.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Boot complete.
+Executing 'tar fs.tar /':
+//a/a/b: open failed
+tar: exit(1)
+Execution of 'tar fs.tar /' complete.
+Getting 'fs.tar' from the file system...
+Timer: 91 ticks
+Thread: 0 idle ticks, 60 kernel ticks, 31 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 733 reads, 563 writes
+hd1:0: 0 reads, 163 writes
+hd1:1: 0 reads, 0 writes
+Console: 861 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...
+Copying tests/filesys/extended/dir-mkdir.tar out of /tmp/FEytecIAdJ.dsk...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/extended/dir-open-persistence FAILURE:
+
+Prerequisite test tests/filesys/extended/dir-open failed.
+
+OUTPUT FROM tests/filesys/extended/dir-open-persistence:
+
+Writing command line to /tmp/2ZDfz5A1lZ.dsk...
+qemu -hda /tmp/2ZDfz5A1lZ.dsk -hdb tmp.dsk -hdc /tmp/EMfTtB0mwz.dsk -hdd /tmp/LnvFX80edb.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Boot complete.
+Executing 'tar fs.tar /':
+Kernel PANIC at ../../devices/disk.c:436 in select_sector(): assertion `sec_no < d->capacity' failed.
+Call stack: 0xc0107366 0xc0104dde 0xc01047d3 0xc010d87c 0xc010ce1f 0xc010c3fc 0xc010b223 0xc010af3d 0xc0101825 0xc01019fb 0x804a829 0x804825e 0x80484c5 0x80482d7 0x80484c5 0x80482d7 0x80481c4 0x80480db 0x8048eb8.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 78 ticks
+Thread: 0 idle ticks, 51 kernel ticks, 27 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 561 reads, 466 writes
+hd1:0: 0 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1215 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...
+Copying tests/filesys/extended/dir-open.tar out of /tmp/EMfTtB0mwz.dsk...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/extended/dir-rm-root-persistence FAILURE:
+
+Error extracting file system:
+///a: open failed
+
+OUTPUT FROM tests/filesys/extended/dir-rm-root-persistence:
+
+Writing command line to /tmp/bUUNu6m3b1.dsk...
+qemu -hda /tmp/bUUNu6m3b1.dsk -hdb tmp.dsk -hdc /tmp/BXfQaOYR81.dsk -hdd /tmp/ibbeWE0AGg.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Boot complete.
+Executing 'tar fs.tar /':
+///a: open failed
+tar: exit(1)
+Execution of 'tar fs.tar /' complete.
+Getting 'fs.tar' from the file system...
+Timer: 86 ticks
+Thread: 0 idle ticks, 59 kernel ticks, 27 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 724 reads, 559 writes
+hd1:0: 0 reads, 162 writes
+hd1:1: 0 reads, 0 writes
+Console: 858 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...
+Copying tests/filesys/extended/dir-rm-root.tar out of /tmp/BXfQaOYR81.dsk...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/extended/dir-rm-tree-persistence FAILURE:
+
+Prerequisite test tests/filesys/extended/dir-rm-tree failed.
+
+OUTPUT FROM tests/filesys/extended/dir-rm-tree-persistence:
+
+Writing command line to /tmp/cRF2aoGVpF.dsk...
+qemu -hda /tmp/cRF2aoGVpF.dsk -hdb tmp.dsk -hdc /tmp/Xxvgs9W6lE.dsk -hdd /tmp/TqZTPbALgq.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Boot complete.
+Executing 'tar fs.tar /':
+//0/0/0//0/0/0/0: open failed
+//0/0/0//0/0/0/1: open failed
+//0/0/0//0/0/0/2: open failed
+//0/0/0//0/0/0/3: open failed
+//0/0/1//0/0/1/0: open failed
+//0/0/1//0/0/1/1: open failed
+//0/0/1//0/0/1/2: open failed
+//0/0/1//0/0/1/3: open failed
+//0/0/2//0/0/2/0: open failed
+//0/0/2//0/0/2/1: open failed
+//0/0/2//0/0/2/2: open failed
+//0/0/2//0/0/2/3: open failed
+//0/1/0//0/1/0/0: open failed
+//0/1/0//0/1/0/1: open failed
+//0/1/0//0/1/0/2: open failed
+//0/1/0//0/1/0/3: open failed
+//0/1/1//0/1/1/0: open failed
+//0/1/1//0/1/1/1: open failed
+//0/1/1//0/1/1/2: open failed
+//0/1/1//0/1/1/3: open failed
+//0/1/2//0/1/2/0: open failed
+//0/1/2//0/1/2/1: open failed
+//0/1/2//0/1/2/2: open failed
+//0/1/2//0/1/2/3: open failed
+//0/2/0//0/2/0/0: open failed
+//0/2/0//0/2/0/1: open failed
+//0/2/0//0/2/0/2: open failed
+//0/2/0//0/2/0/3: open failed
+//0/2/1//0/2/1/0: open failed
+//0/2/1//0/2/1/1: open failed
+//0/2/1//0/2/1/2: open failed
+//0/2/1//0/2/1/3: open failed
+//0/2/2//0/2/2/0: open failed
+//0/2/2//0/2/2/1: open failed
+//0/2/2//0/2/2/2: open failed
+//0/2/2//0/2/2/3: open failed
+//1/0/0//1/0/0/0: open failed
+//1/0/0//1/0/0/1: open failed
+//1/0/0//1/0/0/2: open failed
+//1/0/0//1/0/0/3: open failed
+//1/0/1//1/0/1/0: open failed
+//1/0/1//1/0/1/1: open failed
+//1/0/1//1/0/1/2: open failed
+//1/0/1//1/0/1/3: open failed
+//1/0/2//1/0/2/0: open failed
+//1/0/2//1/0/2/1: open failed
+//1/0/2//1/0/2/2: open failed
+//1/0/2//1/0/2/3: open failed
+//1/1/0//1/1/0/0: open failed
+//1/1/0//1/1/0/1: open failed
+//1/1/0//1/1/0/2: open failed
+//1/1/0//1/1/0/3: open failed
+//1/1/1//1/1/1/0: open failed
+//1/1/1//1/1/1/1: open failed
+//1/1/1//1/1/1/2: open failed
+//1/1/1//1/1/1/3: open failed
+//1/1/2//1/1/2/0: open failed
+//1/1/2//1/1/2/1: open failed
+//1/1/2//1/1/2/2: open failed
+//1/1/2//1/1/2/3: open failed
+//1/2/0//1/2/0/0: open failed
+//1/2/0//1/2/0/1: open failed
+//1/2/0//1/2/0/2: open failed
+//1/2/0//1/2/0/3: open failed
+//1/2/1//1/2/1/0: open failed
+//1/2/1//1/2/1/1: open failed
+//1/2/1//1/2/1/2: open failed
+//1/2/1//1/2/1/3: open failed
+//1/2/2//1/2/2/0: open failed
+//1/2/2//1/2/2/1: open failed
+//1/2/2//1/2/2/2: open failed
+//1/2/2//1/2/2/3: open failed
+//2/0/0//2/0/0/0: open failed
+//2/0/0//2/0/0/1: open failed
+//2/0/0//2/0/0/2: open failed
+//2/0/0//2/0/0/3: open failed
+//2/0/1//2/0/1/0: open failed
+//2/0/1//2/0/1/1: open failed
+//2/0/1//2/0/1/2: open failed
+//2/0/1//2/0/1/3: open failed
+//2/0/2//2/0/2/0: open failed
+//2/0/2//2/0/2/1: open failed
+//2/0/2//2/0/2/2: open failed
+//2/0/2//2/0/2/3: open failed
+//2/1/0//2/1/0/0: open failed
+//2/1/0//2/1/0/1: open failed
+//2/1/0//2/1/0/2: open failed
+//2/1/0//2/1/0/3: open failed
+//2/1/1//2/1/1/0: open failed
+//2/1/1//2/1/1/1: open failed
+//2/1/1//2/1/1/2: open failed
+//2/1/1//2/1/1/3: open failed
+//2/1/2//2/1/2/0: open failed
+//2/1/2//2/1/2/1: open failed
+//2/1/2//2/1/2/2: open failed
+//2/1/2//2/1/2/3: open failed
+//2/2/0//2/2/0/0: open failed
+//2/2/0//2/2/0/1: open failed
+//2/2/0//2/2/0/2: open failed
+//2/2/0//2/2/0/3: open failed
+//2/2/1//2/2/1/0: open failed
+//2/2/1//2/2/1/1: open failed
+//2/2/1//2/2/1/2: open failed
+//2/2/1//2/2/1/3: open failed
+//2/2/2//2/2/2/0: open failed
+//2/2/2//2/2/2/1: open failed
+//2/2/2//2/2/2/2: open failed
+//2/2/2//2/2/2/3: open failed
+//3/0/0//3/0/0/0: open failed
+//3/0/0//3/0/0/1: open failed
+//3/0/0//3/0/0/2: open failed
+//3/0/0//3/0/0/3: open failed
+//3/0/1//3/0/1/0: open failed
+//3/0/1//3/0/1/1: open failed
+//3/0/1//3/0/1/2: open failed
+//3/0/1//3/0/1/3: open failed
+//3/0/2//3/0/2/0: open failed
+//3/0/2//3/0/2/1: open failed
+//3/0/2//3/0/2/2: open failed
+//3/0/2//3/0/2/3: open failed
+//3/1/0//3/1/0/0: open failed
+//3/1/0//3/1/0/1: open failed
+//3/1/0//3/1/0/2: open failed
+//3/1/0//3/1/0/3: open failed
+//3/1/1//3/1/1/0: open failed
+//3/1/1//3/1/1/1: open failed
+//3/1/1//3/1/1/2: open failed
+//3/1/1//3/1/1/3: open failed
+//3/1/2//3/1/2/0: open failed
+//3/1/2//3/1/2/1: open failed
+//3/1/2//3/1/2/2: open failed
+//3/1/2//3/1/2/3: open failed
+//3/2/0//3/2/0/0: open failed
+//3/2/0//3/2/0/1: open failed
+//3/2/0//3/2/0/2: open failed
+//3/2/0//3/2/0/3: open failed
+//3/2/1//3/2/1/0: open failed
+//3/2/1//3/2/1/1: open failed
+//3/2/1//3/2/1/2: open failed
+//3/2/1//3/2/1/3: open failed
+//3/2/2//3/2/2/0: open failed
+//3/2/2//3/2/2/1: open failed
+//3/2/2//3/2/2/2: open failed
+//3/2/2//3/2/2/3: open failed
+tar: exit(1)
+Execution of 'tar fs.tar /' complete.
+Getting 'fs.tar' from the file system...
+Timer: 123 ticks
+Thread: 0 idle ticks, 63 kernel ticks, 60 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 1826 reads, 791 writes
+hd1:0: 0 reads, 220 writes
+hd1:1: 0 reads, 0 writes
+Console: 5162 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...
+Copying tests/filesys/extended/dir-rm-tree.tar out of /tmp/Xxvgs9W6lE.dsk...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/extended/dir-vine-persistence FAILURE:
+
+Prerequisite test tests/filesys/extended/dir-vine failed.
+
+OUTPUT FROM tests/filesys/extended/dir-vine-persistence:
+
+Writing command line to /tmp/20MO86SrCd.dsk...
+qemu -hda /tmp/20MO86SrCd.dsk -hdb tmp.dsk -hdc /tmp/PTVIhF9Jzj.dsk -hdd /tmp/lv1ej8NjJJ.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Boot complete.
+Executing 'tar fs.tar /':
+start/dir0/dir1/dir2/dir3/dir4/dir5/dir6/dir7/dir8/dir9/dir10/dir11/dir12/dir13/dir14/dir15/dir16/file17: file name too long
+start/dir0/dir1/dir2/dir3/dir4/dir5/dir6/dir7/dir8/dir9/dir10/dir11/dir12/dir13/dir14/dir15/dir16/dir17: file name too long
+tar: exit(1)
+Execution of 'tar fs.tar /' complete.
+Getting 'fs.tar' from the file system...
+Timer: 111 ticks
+Thread: 0 idle ticks, 63 kernel ticks, 48 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 1437 reads, 783 writes
+hd1:0: 0 reads, 218 writes
+hd1:1: 0 reads, 0 writes
+Console: 1091 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...
+Copying tests/filesys/extended/dir-vine.tar out of /tmp/PTVIhF9Jzj.dsk...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/extended/grow-dir-lg-persistence FAILURE:
+
+Prerequisite test tests/filesys/extended/grow-dir-lg failed.
+
+OUTPUT FROM tests/filesys/extended/grow-dir-lg-persistence:
+
+Writing command line to /tmp/QsqlJRhRFP.dsk...
+qemu -hda /tmp/QsqlJRhRFP.dsk -hdb tmp.dsk -hdc /tmp/DNX8C8uBLT.dsk -hdd /tmp/RLtBD3JeXT.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Boot complete.
+Executing 'tar fs.tar /':
+//x//x/file0: open failed
+tar: exit(1)
+Execution of 'tar fs.tar /' complete.
+Getting 'fs.tar' from the file system...
+Timer: 96 ticks
+Thread: 0 idle ticks, 60 kernel ticks, 36 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 738 reads, 567 writes
+hd1:0: 0 reads, 164 writes
+hd1:1: 0 reads, 0 writes
+Console: 866 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...
+Copying tests/filesys/extended/grow-dir-lg.tar out of /tmp/DNX8C8uBLT.dsk...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/pt-write-code2 FAILURE:
+
+Kernel panic in run: PANIC at ../../threads/synch.c:198 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107366 0xc0102936 0xc010d8d4 0xc010c919 0xc010988b 0xc0100c3f 0xc010b05f 0xc010ad45 0xc0101825 0xc01019fb 0xc01067d6 0xc010e6f8 0xc010da5b 0xc010c95a 0xc010b42d 0xc010af5d 0xc0101825 0xc01019fb 0x804a091 0x80480e7 0x80486d3 0x8048700
+Translation of call stack:
+In kernel.o:
+0xc0107366: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0102936: lock_acquire (...../../threads/synch.c:200)
+0xc010d8d4: inode_close (...../../filesys/inode.c:248)
+0xc010c919: file_close (...d/../../filesys/file.c:52)
+0xc010988b: process_exit (...../userprog/process.c:239)
+0xc0100c3f: thread_exit (..../../threads/thread.c:305)
+0xc010b05f: syscall_exec (...../userprog/syscall.c:182)
+0xc010ad45: page_fault (.../userprog/exception.c:234)
+0xc0101825: intr_handler (..../threads/interrupt.c:361)
+0xc01019fb: intr_entry (threads/intr-stubs.S:38)
+0xc01067d6: memcpy (...ild/../../lib/string.c:16)
+0xc010e6f8: cache_read (.../../../filesys/cache.c:66)
+0xc010da5b: inode_read_at (...../../filesys/inode.c:305)
+0xc010c95a: file_read (...d/../../filesys/file.c:72)
+0xc010b42d: syscall_read (...../userprog/syscall.c:358)
+0xc010af5d: syscall_handler (...../userprog/syscall.c:116)
+0xc0101825: intr_handler (..../threads/interrupt.c:361)
+0xc01019fb: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/pt-write-code2:
+0x0804a091: read (...../lib/user/syscall.c:117)
+0x080480e7: test_main (...s/vm/pt-write-code-2.c:14)
+0x080486d3: main (...ild/../../tests/main.c:13)
+0x08048700: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/vm/pt-write-code2:
+
+Copying tests/vm/pt-write-code2 into /tmp/OVRqRf8SpZ.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/OVRqRf8SpZ.dsk...
+Writing command line to /tmp/eJbhSMeYE5.dsk...
+qemu -hda /tmp/eJbhSMeYE5.dsk -hdb /tmp/9zqC1nRATP.dsk -hdc /tmp/OVRqRf8SpZ.dsk -hdd /tmp/OVpjaUDaHY.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put pt-write-code2 put sample.txt run pt-write-code2
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'pt-write-code2' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'pt-write-code2':
+(pt-write-code2) begin
+(pt-write-code2) open "sample.txt"
+pt-write-code2: exit(-1)
+Kernel PANIC at ../../threads/synch.c:198 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107366 0xc0102936 0xc010d8d4 0xc010c919 0xc010988b 0xc0100c3f 0xc010b05f 0xc010ad45 0xc0101825 0xc01019fb 0xc01067d6 0xc010e6f8 0xc010da5b 0xc010c95a 0xc010b42d 0xc010af5d 0xc0101825 0xc01019fb 0x804a091 0x80480e7 0x80486d3 0x8048700.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/synch.c:198 in lock_acquire().
+Timer: 65 ticks
+Thread: 0 idle ticks, 64 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 109 reads, 155 writes
+hd1:0: 76 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1570 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...

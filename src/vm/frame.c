@@ -12,17 +12,13 @@ void frame_init ()
 {
 	int i;
 	frame_alloc = bitmap_create (1024);
-	for (i=0; i<0x28b; i++)
+	for (i=0; i<0x300; i++)
 		bitmap_set (frame_alloc, i, true);
 	lock_init (&frame_lock);
 	list_init (&frame_list);
 }
 
-/* Insert frame table entry
- * argument
- * 	upage : user page address,
- * 	kpage : kernel page address,
- * 	t : current thread */
+/* Insert frame table entry*/
 void frame_insert (void *upage, void *kpage, struct thread *t)
 {
 	struct frame_entry *fte = (struct frame_entry *)malloc (sizeof (struct frame_entry));

@@ -7,6 +7,7 @@
 #include "filesys/inode.h"
 #include "filesys/directory.h"
 #include "devices/disk.h"
+#include "threads/thread.h"
 
 /* The disk that contains the file system. */
 struct disk *filesys_disk;
@@ -22,6 +23,7 @@ filesys_init (bool format)
   if (filesys_disk == NULL)
     PANIC ("hd0:1 (hdb) not present, file system initialization failed");
 
+  cache_init();
   inode_init ();
   free_map_init ();
 
@@ -47,7 +49,22 @@ bool
 filesys_create (const char *name, off_t initial_size) 
 {
   disk_sector_t inode_sector = 0;
-  struct dir *dir = dir_open_root ();
+  char buf[128];
+  int pos = path_cut (name, buf);
+  struct dir *dir;
+
+  if (pos == 0) {
+	  if (name[0] == '/') {
+		  dir = dir_open_root ();
+	  }
+	  else {
+		  dir = dir_open (inode_open (thread_current ()-> cur_dir));
+		  pos = -1;
+	  }
+  } else {
+	  dir = get_directory (buf,*name == '/');
+  }
+
   bool success = (dir != NULL
                   && free_map_allocate (1, &inode_sector)
                   && inode_create (inode_sector, initial_size)
@@ -67,11 +84,37 @@ filesys_create (const char *name, off_t initial_size)
 struct file *
 filesys_open (const char *name)
 {
-  struct dir *dir = dir_open_root ();
-  struct inode *inode = NULL;
+	struct inode *inode = NULL;
 
-  if (dir != NULL)
-    dir_lookup (dir, name, &inode);
+	char buf[128];
+	int pos = path_cut (name, buf);
+	struct dir *dir;
+					
+
+	if (pos == 0) {
+		if (name[0] == '/') { 
+			dir = dir_open_root();
+		}
+		else {
+			dir = dir_open(inode_open (thread_current()->cur_dir));
+			pos = -1;
+		}
+	}
+	else 
+		dir = get_directory (buf, name[0] == '/');
+
+	if (dir != NULL) {
+		if (name[0] =='/' && name[1] == 0){
+			inode = dir_get_inode(dir);
+			inode_set_is_dir (inode, true);
+		}
+		else
+			dir_lookup (dir, name+pos+1, &inode);
+	} else {
+		dir_close (dir);
+		return NULL;
+	}
+
   dir_close (dir);
 
   return file_open (inode);
@@ -84,9 +127,27 @@ filesys_open (const char *name)
 bool
 filesys_remove (const char *name) 
 {
-  struct dir *dir = dir_open_root ();
-  bool success = dir != NULL && dir_remove (dir, name);
-  dir_close (dir); 
+  
+	char buf[128];
+	int pos = path_cut (name, buf);
+	struct dir *dir;
+
+	if (pos == 0) {
+		if (name[0] == '/')
+			dir = dir_open_root();
+		else {
+			dir = dir_open(inode_open (thread_current()->cur_dir));
+			pos = -1;
+		}
+	} else {	
+		dir = get_directory (buf,*name == '/');
+	}
+	if (strlen (name) == 2 && name[0] == '/')
+		pos = 0;
+
+	bool success = dir != NULL && dir_remove (dir, name+pos+1);
+
+	dir_close (dir); 
 
   return success;
 }

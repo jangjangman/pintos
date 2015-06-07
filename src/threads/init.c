@@ -118,6 +118,7 @@ main (void)
   filesys_init (format_filesys);
 #endif
 
+  thread_current () -> cur_dir = inode_get_inumber ( dir_get_inode ( dir_open_root()));
   printf ("Boot complete.\n");
   
   /* Run actions specified on kernel command line. */

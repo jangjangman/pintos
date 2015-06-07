@@ -1,0 +1,53 @@
+Copying tests/filesys/extended/dir-rm-cwd into /tmp/6p3ZlHhT80.dsk...
+Copying tests/filesys/extended/tar into /tmp/6p3ZlHhT80.dsk...
+Writing command line to /tmp/IWWL2lM0m0.dsk...
+qemu -hda /tmp/IWWL2lM0m0.dsk -hdb tmp.dsk -hdc /tmp/6p3ZlHhT80.dsk -hdd /tmp/lXLi3KSeyE.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put dir-rm-cwd put tar run dir-rm-cwd
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 163 sector (81 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'dir-rm-cwd' into the file system...
+Putting 'tar' into the file system...
+Executing 'dir-rm-cwd':
+(dir-rm-cwd) begin
+(dir-rm-cwd) open "/"
+(dir-rm-cwd) mkdir "a"
+(dir-rm-cwd) open "/a"
+(dir-rm-cwd) verify "/a" is empty
+(dir-rm-cwd) "/" and "/a" must have different inumbers
+(dir-rm-cwd) chdir "a"
+(dir-rm-cwd) try to remove "/a"
+(dir-rm-cwd) remove failed
+(dir-rm-cwd) try to remove "../a" (must fail)
+(dir-rm-cwd) try to remove ".././a" (must fail)
+(dir-rm-cwd) try to remove "/./a" (must fail)
+(dir-rm-cwd) open "/a"
+(dir-rm-cwd) open "."
+(dir-rm-cwd) "/a" and "." must have same inumber
+(dir-rm-cwd) "/" and "/a" must have different inumbers
+(dir-rm-cwd) chdir "/a"
+(dir-rm-cwd) open "."
+(dir-rm-cwd) "." must have same inumber as before
+(dir-rm-cwd) chdir "/"
+(dir-rm-cwd) try to remove "a" (must fail: still open)
+(dir-rm-cwd) verify "/a" is empty
+(dir-rm-cwd) end
+dir-rm-cwd: exit(0)
+Execution of 'dir-rm-cwd' complete.
+Timer: 96 ticks
+Thread: 0 idle ticks, 92 kernel ticks, 4 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 200 reads, 336 writes
+hd1:0: 163 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1694 characters output
+Keyboard: 0 keys pressed
+Exception: 4 page faults
+Powering off...

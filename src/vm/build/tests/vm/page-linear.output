@@ -1,6 +1,6 @@
-Copying tests/vm/page-linear into /tmp/gwDwRghyFA.dsk...
-Writing command line to /tmp/OPgIZBRfvo.dsk...
-qemu -hda /tmp/OPgIZBRfvo.dsk -hdb /tmp/kUhM6drlqX.dsk -hdc /tmp/gwDwRghyFA.dsk -hdd /tmp/P14QNDIWQz.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-linear into /tmp/k8m81Bwfpn.dsk...
+Writing command line to /tmp/aSYrWhA8ui.dsk...
+qemu -hda /tmp/aSYrWhA8ui.dsk -hdb /tmp/ss9x6u8XIf.dsk -hdc /tmp/k8m81Bwfpn.dsk -hdd /tmp/KrNTHiHHgQ.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-linear run page-linear
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -23,8 +23,8 @@ Executing 'page-linear':
 (page-linear) end
 page-linear: exit(0)
 Execution of 'page-linear' complete.
-Timer: 984 ticks
-Thread: 0 idle ticks, 64 kernel ticks, 920 user ticks
+Timer: 910 ticks
+Thread: 0 idle ticks, 63 kernel ticks, 847 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 63 reads, 164 writes
 hd1:0: 78 reads, 0 writes

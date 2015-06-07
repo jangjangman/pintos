@@ -21,6 +21,7 @@
 #include "vm/frame.h"
 #include "vm/page.h"
 #include "userprog/syscall.h"
+#include "filesys/cache.h"
 
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
@@ -264,6 +265,14 @@ process_exit (void)
       pagedir_activate (NULL);
   //    pagedir_destroy (pd);
     }
+
+  lock_acquire (&cache_lock);
+  int i;
+  for (i=0; i<CACHE_SIZE; i++)
+	  if (cvalid[i])
+		  cache_out (i);
+  lock_release (&cache_lock);
+
   	file_close(curr->exec);
   	curr->exec=NULL;
 	sema_up(&curr->sema_wait);

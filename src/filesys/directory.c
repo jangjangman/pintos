@@ -5,12 +5,14 @@
 #include "filesys/filesys.h"
 #include "filesys/inode.h"
 #include "threads/malloc.h"
+#include "threads/thread.h"
 
 /* A directory. */
 struct dir 
   {
     struct inode *inode;                /* Backing store. */
     off_t pos;                          /* Current position. */
+	bool unused;
   };
 
 /* A single directory entry. */
@@ -55,6 +57,12 @@ struct dir *
 dir_open_root (void)
 {
   return dir_open (inode_open (ROOT_DIR_SECTOR));
+}
+
+struct dir *
+dir_open_curr (void)
+{
+	  return dir_open (inode_open (thread_current ()->cur_dir));
 }
 
 /* Opens and returns a new directory for the same inode as DIR.
@@ -201,6 +209,14 @@ dir_remove (struct dir *dir, const char *name)
   if (inode == NULL)
     goto done;
 
+  if (inode_is_dir (inode) &&
+		  dir_exist_parent (dir_open (inode_open (thread_current ()->cur_dir)), inode))
+	  goto done;
+
+  if (inode_is_dir (inode) &&
+		  inode_open_cnt (inode) > 1)
+	  goto done;
+
   /* Erase directory entry. */
   e.in_use = false;
   if (inode_write_at (dir->inode, &e, sizeof e, ofs) != sizeof e) 
@@ -215,6 +231,29 @@ dir_remove (struct dir *dir, const char *name)
   return success;
 }
 
+bool
+dir_exist_parent (struct dir *dir, struct inode *inode)
+{
+	struct dir *prev;
+	struct dir *parent = dir;
+	struct dir *base = dir_open_root ();
+	while (parent != base) {
+		if (parent->inode == inode){
+			return true;
+		}
+
+		struct inode *temp;
+		if (!dir_lookup (parent, "..", &temp)){
+			return false;
+		}
+		prev = parent;
+		parent = dir_open (temp);
+		dir_close (prev);
+	}
+	dir_close(base);
+	return false;
+}
+
 /* Reads the next directory entry in DIR and stores the name in
    NAME.  Returns true if successful, false if the directory
    contains no more entries. */
@@ -226,11 +265,59 @@ dir_readdir (struct dir *dir, char name[NAME_MAX + 1])
   while (inode_read_at (dir->inode, &e, sizeof e, dir->pos) == sizeof e) 
     {
       dir->pos += sizeof e;
-      if (e.in_use)
+      if (e.in_use && strcmp (e.name, ".") && strcmp (e.name, ".."))
         {
           strlcpy (name, e.name, NAME_MAX + 1);
           return true;
         } 
     }
   return false;
+}
+
+/* make get_directory method to implement easily */
+struct dir*
+get_directory (char *path, bool absolute) 
+{
+	// how about "cd   " -> path is null and path is root
+	struct dir *base, *target, *prev;
+	if (absolute)
+		base = dir_open_root ();
+	else 
+		base = dir_open (inode_open  (thread_current ()->cur_dir));
+
+	if (strlen(path) !=1 && strrchr (path,'/')!=NULL && *(strrchr (path, '/') +1) == '\0') {
+		dir_close(base);
+		return NULL;
+	}
+
+	struct inode *inode;
+	int pos = 0;
+	char buf[17];
+	target = base;
+	if (absolute)
+		++pos;
+
+	prev = base;
+	while (pos < strlen(path))
+	{
+		if (target == NULL){
+			dir_close (prev);
+			return NULL;
+		}
+		pos = path_parse (path, pos, buf);
+		if (pos == -1){
+			dir_close (prev);
+			break;
+		}
+	
+		/* Search directory to use buf */
+		prev = target;
+		if (!dir_lookup (target, buf, &inode)){
+			dir_close (prev);
+			return NULL;
+		}
+		target = dir_open (inode);
+		dir_close (prev);
+	}
+		return target;
 }
